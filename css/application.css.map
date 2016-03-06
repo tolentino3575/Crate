@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,sCAAsC;ACAtC,uBAAuB",
+"sources": ["../scss/base/_base.scss","../scss/components/_typography.scss"],
+"names": [],
+"file": "application.css"
+}
