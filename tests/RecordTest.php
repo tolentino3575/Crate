@@ -53,7 +53,20 @@
       $result = $test_record->getGenre();
       //Assert
       $this->assertEquals($genre, $result);
-
+    }
+    function test_getTrack()
+    {
+      //Arrange
+      $artist = "Alabama Shakes";
+      $genre = "Blues";
+      $track = "Sound and Color";
+      $release_date = "2015-02-02";
+      $id = 1;
+      $test_record = new Record($artist, $genre, $track, $release_date, $id);
+      //Act
+      $result = $test_record->getTrack();
+      //Assert
+      $this->assertEquals($track, $result);
     }
 
   }
