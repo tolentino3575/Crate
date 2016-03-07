@@ -2,19 +2,29 @@
 
 class Record
 {
+  private $title;
   private $artist;
   private $genre;
   private $track;
   private $release_date;
   private $id;
 
-  function __construct($artist, $genre, $track, $release_date, $id = null)
+  function __construct($title, $artist, $genre, $track, $release_date, $id = null)
   {
+    $this->title = $title;
     $this->artist = $artist;
     $this->genre = $genre;
     $this->track = $track;
     $this->release_date = $release_date;
     $this->id = $id;
+  }
+  function setTitle($new_title)
+  {
+    $this->title = (string) $title;
+  }
+  function getTitle()
+  {
+    return $this->title;
   }
   function setArtist($new_artist)
   {
@@ -54,8 +64,48 @@ class Record
   }
   function save()
   {
-    $GLOBALS['DB']->exec("INSERT INTO records (artists, genre, tracks, release_date) VALUES ('{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getReleaseDate()}')");
+    $GLOBALS['DB']->exec("INSERT INTO records (title, artists, genre, tracks, release_date) VALUES ('{$this->getTitle()}','{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getReleaseDate()}')");
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
+  static function getAll()
+  {
+    $returned_records = $GLOBALS['DB']->query("SELECT * FROM records");
+
+    $records = array();
+    foreach($returned_records as $record){
+      $title = $record['title'];
+      $artist = $record['artists'];
+      $genre = $record['genre'];
+      $track = $record['tracks'];
+      $release_date = $record['release_date'];
+      $id = $record['id'];
+      $new_record = new Record($title, $artist, $genre, $track, $release_date, $id);
+      array_push($records, $new_record);
+    }
+    return $records;
+  }
+  static function deleteAll()
+  {
+    $GLOBALS['DB']->exec("DELETE FROM records");
+  }
+  // function delete()
+  // {
+  //   $GLOBALS['DB']->exec("DELETE FROM records WHERE id {$this->getId()}");
+  //   $GLOBALS['DB']->exec("DELETE FROM collections WHERE album_id = {$this->getId()}");
+  // }
+  static function find($search_id)
+  {
+    $found_record = null;
+    $records = Record::getAll();
+    foreach($records as $record){
+      $record_id = $record->getId();
+      if($record_id == $search_id){
+        $found_record = $record;
+      }
+    }return $found_record;
+
+  }
+
+
 }
  ?>
