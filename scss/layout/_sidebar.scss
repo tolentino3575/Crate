@@ -14,8 +14,18 @@
   align-items: center;
   border: 2px solid red;
   width: 70%;
-  // flex: 2;
+  margin-top: 5em;
+}
 
+.search {
+  a {
+    text-decoration: none;
+    color: $color-primary;
+  }
+}
+
+.search-form {
+  margin-bottom: 2em;
 }
 .social-footer {
   border: 1px solid green;
