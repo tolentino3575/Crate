@@ -1,0 +1,7 @@
+.gallery {
+  @extend %flex;
+  background: $color-primary;
+  height: 100vh;
+  width: 80vw;
+
+}

@@ -1,4 +1,44 @@
 /* Base Styles -------------------- */
+* {
+  box-sizing: border-box; }
+
+.sidebar {
+  flex-direction: column;
+  width: 20vw;
+  height: 100vh;
+  align-items: center;
+  justify-content: flex-start;
+  border: 1px solid blue; }
+
+.search {
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid red;
+  width: 70%; }
+
+.social-footer {
+  border: 1px solid green;
+  justify-content: center;
+  font-size: 2em;
+  width: 100%;
+  text-align: center;
+  align-items: flex-end;
+  flex: 1; }
+
+.gallery {
+  background: #252525;
+  height: 100vh;
+  width: 80vw; }
+
+.sidebar, .search, .social-footer, .container, .gallery {
+  display: flex; }
+
 /* Web fonts --------*/
+.logo h1 {
+  font-family: "Monoton", cursive;
+  font-weight: normal;
+  font-size: 4.5em;
+  color: #252525;
+  margin-top: 3em; }
 
 /*# sourceMappingURL=application.css.map */

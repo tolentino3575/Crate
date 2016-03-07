@@ -1,1 +1,11 @@
 /* Web fonts --------*/
+
+.logo {
+  h1 {
+  font-family: $stack-monoton;
+  font-weight: normal;
+  font-size: 4.5em;
+  color: $color-primary;
+  margin-top: 3em;
+}
+}
