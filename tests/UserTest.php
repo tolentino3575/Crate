@@ -13,6 +13,11 @@
 
     class UserTest extends PHPUnit_Framework_TestCase
     {
+        protected function tearDown()
+        {
+            User::deleteAll();
+        }
+
         function test_getUserName()
         {
             // Arrange
@@ -41,6 +46,40 @@
             // Arrange
             $result = User::getAll();
             $this->assertEquals($new_user, $result[0]);
+        }
+
+        function test_getAll()
+        {
+            // Arrange
+            $username1 = 'user';
+            $password1 = 'user';
+            $new_user1 = new User($username1, $password1);
+            $new_user1->save();
+
+            $username2 = 'user2';
+            $password2 = 'user2';
+            $new_user2 = new User($username2, $password2);
+            $new_user2->save();
+
+            // Act
+            $result = User::getAll();
+            $this->assertEquals([$new_user1, $new_user2], $result);
+        }
+
+        function test_deleteAll()
+        {
+            // Arrange
+            $username = 'user';
+            $password = 'user';
+            $new_user = new User($username, $password);
+            $new_user->save();
+
+            // Act
+            User::deleteAll();
+            $result = User::getAll();
+
+            // Assert
+            $this->assertEquals([], $result);
         }
     }
 ?>

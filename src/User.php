@@ -42,5 +42,10 @@
             }
             return $users;
         }
+
+        static function deleteAll()
+        {
+            $GLOBALS['DB']->exec("DELETE FROM users");
+        }
     }
 ?>
