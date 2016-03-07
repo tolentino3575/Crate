@@ -40,6 +40,14 @@ class Record
   {
     $this->track = (string)$new_track;
   }
+  function setReleaseDate($new_release_date)
+  {
+    $this->release_date = $release_date;
+  }
+  function getReleaseDate()
+  {
+    return $this->release_date;
+  }
   function getId()
   {
     return $this->id;

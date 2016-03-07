@@ -68,5 +68,19 @@
       //Assert
       $this->assertEquals($track, $result);
     }
+    function test_getReleaseDate()
+    {
+      //Arrange
+      $artist = "Alabama Shakes";
+      $genre = "Blues";
+      $track = "Sound and Color";
+      $release_date = "2015-02-02";
+      $id = 1;
+      $test_record = new Record($artist, $genre, $track, $release_date, $id);
+      //Act
+      $result = $test_record->getReleaseDate();
+      //Assert
+      $this->assertEquals($release_date, $result);
+    }
 
   }
