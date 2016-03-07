@@ -26,5 +26,21 @@
             // Assert
             $this->assertEquals('user', $result);
         }
+
+        function test_save()
+        {
+            // Arrange
+            $username = 'user';
+            $password = 'user';
+            $new_user = new User($username, $password);
+
+
+            // Act
+            $new_user->save();
+
+            // Arrange
+            $result = User::getAll();
+            $this->assertEquals($new_user, $result[0]);
+        }
     }
 ?>
