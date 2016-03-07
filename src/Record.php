@@ -8,20 +8,21 @@ class Record
   private $release_date;
   private $id;
 
-  function __construct($artist, $genre, $track, $id = null)
+  function __construct($artist, $genre, $track, $release_date, $id = null)
   {
     $this->artist = $artist;
     $this->genre = $genre;
     $this->track = $track;
     $this->release_date = $release_date;
-  }
-  function getArtist()
-  {
-    return $this->name;
+    $this->id = $id;
   }
   function setArtist($new_artist)
   {
-    $this->artist = (string) $new_artist;
+    $this->artist = (string) $artist;
+  }
+  function getArtist()
+  {
+    return $this->artist;
   }
   function getGenre()
   {
