@@ -5,6 +5,9 @@ html {
   text-rendering: optimizelegibility;
 }
 
+body {
+  font-family: $stack-varela;
+}
 
 .logo {
   h1 {
@@ -13,5 +16,17 @@ html {
   font-size: 4.5em;
   color: $color-primary;
   margin-top: 3em;
+  margin-bottom: 0;
+} p {
+  color: #4d4d4d;
+  width: 75%;
+  margin: auto;
+  font-size: .95em;
 }
+}
+
+a {
+  &:hover {
+    color: #B74ACC;
+  }
 }

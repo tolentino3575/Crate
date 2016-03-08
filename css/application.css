@@ -17,14 +17,18 @@
   justify-content: space-between; }
 
 .search {
-  margin-top: 6em;
   width: 100%;
   flex: 1;
   text-align: center; }
 
+.logo {
+  text-align: center;
+  margin-bottom: 4em; }
+
 .sidebar a {
   text-decoration: none;
-  color: #252525; }
+  color: #252525;
+  margin-bottom: 2em; }
 
 .search-form {
   margin-bottom: 2em; }
@@ -43,16 +47,29 @@ input {
   justify-content: space-around;
   font-size: 2em;
   width: 100%;
-  margin: 30px 0;
   color: #252525; }
+  .social-footer a {
+    margin: 30px 0; }
+    .social-footer a:hover {
+      color: #B74ACC; }
 
-span {
+h1 .c-logo {
   display: inline-block;
   animation: rotate 3s ease-out; }
 
 @keyframes rotate {
   100% {
     transform: rotateZ(360deg); } }
+.login {
+  flex: 0.5;
+  width: 80%; }
+  .login input {
+    width: 100%;
+    margin-bottom: 20px; }
+  .login button {
+    display: block;
+    margin: auto; }
+
 .gallery {
   padding-left: 350px;
   background: #252525;
@@ -168,12 +185,24 @@ html {
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizelegibility; }
 
+body {
+  font-family: "Varela Round", sans-serif; }
+
 .logo h1 {
   font-family: "Monoton", cursive;
   font-weight: normal;
   font-size: 4.5em;
   color: #252525;
-  margin-top: 3em; }
+  margin-top: 3em;
+  margin-bottom: 0; }
+.logo p {
+  color: #4d4d4d;
+  width: 75%;
+  margin: auto;
+  font-size: .95em; }
+
+a:hover {
+  color: #B74ACC; }
 
 button[type="submit"] {
   -webkit-appearance: button;
@@ -183,6 +212,19 @@ button[type="submit"] {
   font-size: .8em;
   border-radius: 25px;
   margin-left: 10px;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: #fff; }
+
+.login button {
+  -webkit-appearance: button;
+  cursor: pointer;
+  background-color: #B74ACC;
+  border: 0;
+  font-size: .8em;
+  border-radius: 25px;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  color: #fff; }
 
 /*# sourceMappingURL=application.css.map */

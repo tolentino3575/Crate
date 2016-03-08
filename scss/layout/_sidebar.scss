@@ -16,10 +16,15 @@
 }
 
 .search {
-  margin-top: 6em;
+  // margin-top: 6em;
   width: 100%;
   flex: 1;
   text-align: center;
+}
+
+.logo {
+  text-align: center;
+  margin-bottom: 4em;
 }
 
 
@@ -27,6 +32,7 @@
   a {
     text-decoration: none;
     color: $color-primary;
+    margin-bottom: 2em;
   }
 }
 
@@ -51,11 +57,16 @@ input {
   justify-content: space-around;
   font-size: 2em;
   width: 100%;
-  margin: 30px 0;
   color: $color-primary;
+  a{
+    margin: 30px 0;
+    &:hover {
+      color: #B74ACC;
+    }
+  }
 }
 
-span {
+h1 .c-logo {
   display: inline-block;
   // animation: rotate 4s cubic-bezier(1,.48,.04,.96);
   animation: rotate 3s ease-out;
@@ -63,4 +74,19 @@ span {
 
 @keyframes rotate {
   100% {transform: rotateZ(360deg);}
+}
+
+
+.login {
+  // border: 2px solid red;
+  flex: 0.5;
+  width: 80%;
+  input {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+  button {
+    display: block;
+    margin: auto;
+  }
 }
