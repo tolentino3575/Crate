@@ -158,11 +158,10 @@
         curl_close ($ch);
 
         $results_array = json_decode($output, true);
-        print_r($results_array);
         return $app['twig']->render("artist_bio.html.twig", array(
             'users' => User::getAll(),
             'results' => $results_array,
-            'records' => $results_array['']
+            'images' => $results_array['images']
         ));
     });
 
