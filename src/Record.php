@@ -70,15 +70,16 @@ class Record
   static function getAll()
   {
     $returned_records = $GLOBALS['DB']->query("SELECT * FROM records");
-    $record = array();
-    foreach($returned_records as $records){
+    $records = array();
+    foreach($returned_records as $record){
       $title = $record['title'];
       $artist = $record['artists'];
       $genre = $record['genre'];
       $track = $record['tracks'];
       $release_date = $record['release_date'];
+      $image = $record['image'];
       $id = $record['id'];
-      $new_record = new Record($title, $artist, $genre, $track, $release_date, $id);
+      $new_record = new Record($title, $artist, $genre, $track, $release_date, $image, $id);
       array_push($records, $new_record);
     }
     return $records;
@@ -86,6 +87,24 @@ class Record
   static function deleteAll()
   {
     $GLOBALS['DB']->exec("DELETE FROM records");
+  }
+
+  // function delete()
+  // {
+  //   $GLOBALS['DB']->exec("DELETE FROM records WHERE id {$this->getId()}");
+  //   $GLOBALS['DB']->exec("DELETE FROM collections WHERE album_id = {$this->getId()}");
+  // }
+  static function find($search_id)
+  {
+    $found_record = null;
+    $records = Record::getAll();
+    foreach($records as $record){
+      $record_id = $record->getId();
+      if($record_id == $search_id){
+        $found_record = $record;
+      }
+    }return $found_record;
+
   }
 
 
