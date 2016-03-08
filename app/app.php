@@ -143,7 +143,7 @@
         $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
         $url = "https://api.discogs.com/";
 
-        $results_url = $url . '/artists/' . $id;
+        $results_url = $url . '/artists/' . $id . '?key=' . $consumerKey . '&secret=' . $consumerSecret;
 
         $ch = curl_init();
         //Set the User-Agent Identifier
@@ -161,7 +161,8 @@
         print_r($results_array);
         return $app['twig']->render("artist_bio.html.twig", array(
             'users' => User::getAll(),
-            'results' => $results_array
+            'results' => $results_array,
+            'records' => $results_array['']
         ));
     });
 
