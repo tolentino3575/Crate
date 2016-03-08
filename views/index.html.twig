@@ -12,18 +12,28 @@
         <ul>
         {% for result in results %}
             <img src='{{result.thumb}}'></img>
-
+            <p><a href ="/artist/{{result.id}}">{{result.title}}, {{result.id}}</a></p>
             <!-- {{result.title}} -->
         {% endfor %}
 
 
         <div class='paginate'>
-            {% if pages.page <= 1000 %}
+
+            {% if pages.page <= 1000 and pages.page >= 2 %}
                 {% set nextpage = pages.page + 1 %}
-            {% endif %}
+                {% set prevpage = pages.page - 1 %}
+                <form action="/search/{{nextpage}}" method="get">
+                    <button type="submit" name="button">next page</button>
+                </form>
+                <form action="/search/{{prevpage}}" method="get">
+                    <button type="submit" name="button">prev page</button>
+                </form>
+            {% else %}
+            {% set nextpage = pages.page + 1 %}
             <form action="/search/{{nextpage}}" method="get">
                 <button type="submit" name="button">next page</button>
             </form>
+            {% endif %}
         </div>
 
 

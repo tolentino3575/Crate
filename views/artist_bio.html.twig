@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CRATE</title>
+    </head>
+    <body>
+        <h1>Crate</h1>
+        <!-- foreach($artists_array['results'] as $img){
+            echo "<p><img src=".$img['thumb']. ">". $img['title'] ."</img></p>";
+        } -->
+        <ul>
+            <h1>{{results.name}}</h1>
+        <!-- {% for result in results %}
+            {{result.name}}
+            <p><a href ="/artist/{{result.id}}">{{result.title}}, {{result.id}}</a></p>
+
+        {% endfor %} -->
+
+
+
+        </ul>
+        <form action="/search">
+            <label for="genre">Genre</label>
+            <input type="radio" name="filter">
+            <label for="genre">Artist</label>
+            <input type="radio" name="filter">
+            <label for="genre">Year</label>
+            <input type="radio" name="filter">
+            <input type="text" name="search_term">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
