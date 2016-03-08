@@ -7,15 +7,17 @@ class Record
   private $genre;
   private $track;
   private $release_date;
+  private $image;
   private $id;
 
-  function __construct($title, $artist, $genre, $track, $release_date, $id = null)
+  function __construct($title, $artist, $genre, $track, $release_date, $image = null, $id = null)
   {
     $this->title = $title;
     $this->artist = $artist;
     $this->genre = $genre;
     $this->track = $track;
     $this->release_date = $release_date;
+    $this->image = $image;
     $this->id = $id;
   }
   function setTitle($new_title)
@@ -58,18 +60,26 @@ class Record
   {
     return $this->release_date;
   }
+  function getImage()
+  {
+    return $this->image;
+  }
   function getId()
   {
     return $this->id;
   }
   function save()
   {
-    $GLOBALS['DB']->exec("INSERT INTO records (title, artists, genre, tracks, release_date) VALUES ('{$this->getTitle()}','{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getReleaseDate()}')");
+    $GLOBALS['DB']->exec(
+    "INSERT INTO records (title, artists, genre, tracks, release_date, image)
+    VALUES ('{$this->getTitle()}','{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getReleaseDate()}', '{$this->getImage()}')");
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
   static function getAll()
   {
-    $returned_records = $GLOBALS['DB']->query("SELECT * FROM records");
+    $returned_records = $GLOBALS['DB']->query(
+    "SELECT * FROM records
+    ORDER BY release_date");
     $records = array();
     foreach($returned_records as $record){
       $title = $record['title'];
@@ -89,11 +99,11 @@ class Record
     $GLOBALS['DB']->exec("DELETE FROM records");
   }
 
-  // function delete()
-  // {
-  //   $GLOBALS['DB']->exec("DELETE FROM records WHERE id {$this->getId()}");
-  //   $GLOBALS['DB']->exec("DELETE FROM collections WHERE album_id = {$this->getId()}");
-  // }
+  function delete()
+  {
+    $GLOBALS['DB']->exec("DELETE FROM records WHERE id = {$this->getId()}");
+    $GLOBALS['DB']->exec("DELETE FROM collections WHERE album_id = {$this->getId()}");
+  }
   static function find($search_id)
   {
     $found_record = null;

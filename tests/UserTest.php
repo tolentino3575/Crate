@@ -8,7 +8,7 @@
 require_once "src/User.php";
 require_once "src/Record.php";
 
-$server = 'mysql:host=localhost:8889;dbname=discogs_test';
+$server = 'mysql:host=localhost;dbname=discogs_test';
 $username = 'root';
 $password = 'root';
 $DB = new PDO($server, $username, $password);
@@ -141,8 +141,9 @@ class UserTest extends PHPUnit_Framework_TestCase
         $genre = "Jazz";
         $track = "Good";
         $release_date = "2000-01-01";
+        $image = null;
         $id = 1;
-        $test_record = new Record($title, $artist, $genre, $track, $release_date, $id);
+        $test_record = new Record($title, $artist, $genre, $track, $release_date, $image,$id);
         $test_record->save();
 
         $title2 = "Yeah";
@@ -150,8 +151,9 @@ class UserTest extends PHPUnit_Framework_TestCase
         $genre2 = "Rock";
         $track2 = "Great";
         $release_date2 = "2000-02-02";
+        $image = null;
         $id2 = 1;
-        $test_record2 = new Record($title2, $artist2, $genre2, $track2, $release_date2, $id2);
+        $test_record2 = new Record($title2, $artist2, $genre2, $track2, $release_date2, $image, $id2);
         $test_record2->save();
 
         //Act
@@ -178,12 +180,6 @@ class UserTest extends PHPUnit_Framework_TestCase
         //Assert
         $this->assertEquals($test_user, $result);
     }
-
-
-
-
-
-
 }
 
 ?>

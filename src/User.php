@@ -82,8 +82,9 @@
                 $genre = $record['genre'];
                 $track = $record['tracks'];
                 $release_date = $record['release_date'];
+                $image = $record['image'];
                 $id = $record['id'];
-                $new_record = new Record($title, $artist, $genre, $track, $release_date, $id);
+                $new_record = new Record($title, $artist, $genre, $track, $release_date, $image, $id);
                 array_push($result_records, $new_record);
             }
             return $result_records;
