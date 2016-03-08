@@ -1,3 +1,6 @@
 .container {
   @extend %flex;
+  max-width: 100%;
+  // overflow-x: hidden;
+  // justify-content: space-between;
 }

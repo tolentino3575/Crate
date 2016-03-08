@@ -4,18 +4,22 @@
 
 .sidebar {
   flex-direction: column;
-  width: 20vw;
-  height: 100vh;
   align-items: center;
-  justify-content: flex-start;
-  border: 1px solid blue; }
+  position: fixed;
+  background: #fff;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 350px;
+  min-width: 350px;
+  overflow: hidden;
+  z-index: 100;
+  justify-content: space-between; }
 
 .search {
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid red;
-  width: 70%;
-  margin-top: 5em; }
+  width: 100%;
+  flex: 1;
+  text-align: center; }
 
 .search a {
   text-decoration: none;
@@ -25,32 +29,50 @@
   margin-bottom: 2em; }
 
 .social-footer {
-  border: 1px solid green;
-  justify-content: center;
   font-size: 2em;
   width: 100%;
-  text-align: center;
-  align-items: flex-end;
-  flex: 1; }
+  text-align: center; }
 
+span {
+  display: inline-block;
+  animation: rotate 1s infinite linear; }
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg); } }
 .gallery {
+  position: relative;
+  padding-left: 350px;
   background: #252525;
-  height: 100vh;
-  width: 80vw; }
+  min-height: 100vh;
+  width: 100%;
+  border: 1px solid teal;
+  max-width: 3000px; }
 
 body {
   font-family: Arial; }
 
+.portfolioContainer {
+  width: 100%;
+  margin: 0 auto;
+  border: 1px solid red; }
+
+.release {
+  border: 1px solid green;
+  width: 278px;
+  margin: 20px; }
+
 .portfolioFilter a {
   margin-right: 10px;
-  color: #fff;
+  color: #000;
   text-decoration: none; }
 
 .portfolioFilter a.current {
   font-weight: bold; }
 
 img {
-  margin: 5px; }
+  max-width: 100%;
+  height: auto; }
 
 .isotope-item {
   z-index: 2; }
@@ -76,7 +98,10 @@ img {
   -moz-transition-property: -moz-transform, opacity;
   transition-property: transform, opacity; }
 
-.sidebar, .search, .social-footer, .container {
+.container {
+  max-width: 100%; }
+
+.sidebar, .container {
   display: flex; }
 
 /* Web fonts --------*/

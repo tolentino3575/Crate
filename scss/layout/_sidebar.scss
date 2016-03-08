@@ -1,21 +1,29 @@
+
 .sidebar {
   @extend %flex;
   flex-direction: column;
-  width: 20vw;
-  height: 100vh;
   align-items: center;
-  justify-content: flex-start;
-  border: 1px solid blue;
+  position: fixed;
+  background: #fff;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 350px;
+  min-width: 350px;
+  overflow: hidden;
+  z-index: 100;
+  justify-content: space-between;
 }
 
 .search {
-  @extend %flex;
-  flex-direction: column;
-  align-items: center;
-  border: 2px solid red;
-  width: 70%;
-  margin-top: 5em;
+  // border: 1px solid red;
+  width: 100%;
+  // margin-top: 5em;
+  flex: 1;
+  text-align: center;
 }
+
+
 
 .search {
   a {
@@ -28,12 +36,18 @@
   margin-bottom: 2em;
 }
 .social-footer {
-  border: 1px solid green;
-  justify-content: center;
+
+  // border: 1px solid green;
   font-size: 2em;
   width: 100%;
   text-align: center;
-  @extend %flex;
-  align-items: flex-end;
-  flex: 1;
+}
+
+span {
+  display: inline-block;
+  animation: rotate 1s infinite linear;
+}
+
+@keyframes rotate {
+  100% {transform: rotateZ(360deg);}
 }
