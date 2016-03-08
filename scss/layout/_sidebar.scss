@@ -1,4 +1,3 @@
-
 .sidebar {
   position: fixed;
   background: #fff;
@@ -16,6 +15,17 @@
     content: "";
     display: block;
     height: 100px;
+  }
+  @media #{$medium} {
+    width: 275px;
+    min-width: 275px;
+  }
+  @media #{$small} {
+    position: static;
+    width: 100%;
+    height: 100vh;
+    background: none;
+    margin: 0;
   }
 }
 
@@ -59,6 +69,9 @@ input {
   color: #666666;
   outline: none;
   }
+  @media #{$small} {
+    width: 50%;
+  }
 }
 
 .social-footer {
@@ -70,12 +83,20 @@ input {
   justify-content: space-around;
   font-size: 2em;
   width: 100%;
-  color: $color-primary;
   a{
+    color: $light-grey;
     margin: 30px 0;
     &:hover {
       color: #B74ACC;
     }
+  }
+  @media #{$small} {
+    font-size: 1.5em;
+    width: 50%;
+    margin: auto;
+    display: block;
+    left: 25%;
+    height: 75px;
   }
 }
 
