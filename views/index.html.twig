@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CRATE</title>
+    </head>
+    <body>
+        <h1>Crate</h1>
+        <!-- foreach($artists_array['results'] as $img){
+            echo "<p><img src=".$img['thumb']. ">". $img['title'] ."</img></p>";
+        } -->
+        <ul>
+        {% for result in results %}
+            <img src='{{result.thumb}}'></img>
+            <!-- {{result.title}} -->
+
+        {% endfor %}
+        </ul>
+        <form action="/search">
+            <input type="text" name="artist">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
