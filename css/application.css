@@ -9,12 +9,24 @@
   background: #fff;
   left: 0;
   top: 0;
-  height: 100vh;
+  min-height: 100%;
+  border: 1px solid green;
   width: 350px;
   min-width: 350px;
+  padding: 0 20px;
   overflow: hidden;
   z-index: 100;
-  justify-content: space-between; }
+  justify-content: space-between;
+  margin-bottom: -100px; }
+  .sidebar:after {
+    content: "";
+    display: block;
+    height: 100px; }
+
+.login-toggle {
+  display: block;
+  text-align: center;
+  margin: auto; }
 
 .search {
   width: 100%;
@@ -36,7 +48,7 @@
 input {
   border: 1px solid #252525;
   padding: 10px 25px;
-  width: 50%; }
+  width: 70%; }
   input[type="text"] {
     font-size: .9em;
     border-radius: 25px;
@@ -44,6 +56,10 @@ input {
     outline: none; }
 
 .social-footer {
+  height: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   justify-content: space-around;
   font-size: 2em;
   width: 100%;
@@ -61,8 +77,11 @@ h1 .c-logo {
   100% {
     transform: rotateZ(360deg); } }
 .login {
+  display: none;
   flex: 0.5;
-  width: 80%; }
+  width: 80%;
+  margin: auto;
+  margin-bottom: 32px; }
   .login input {
     width: 100%;
     margin-bottom: 20px; }
@@ -176,7 +195,7 @@ h1 .c-logo {
 .container {
   max-width: 100%; }
 
-.sidebar, .social-footer, .gallery, .portfolioContainer, .container {
+.social-footer, .gallery, .portfolioContainer, .container {
   display: flex; }
 
 /* Web fonts --------*/

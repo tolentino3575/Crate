@@ -4,7 +4,7 @@
 
 March 11, 2016
 
-##### By Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie Duro, Yvonna Contreras and Erik Tolentino
+##### By Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie Duro, Yvonna Contreras and Erik Tolentino.
 
 ### Description
 
@@ -33,4 +33,4 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 
 *This software is licensed under the MIT license.*
 
-&copy; 2016 **Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie Duro, Yvonna Contreras and Erik Tolentino**
+&copy;2016 **Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie Duro, Yvonna Contreras and Erik Tolentino**

@@ -1,18 +1,32 @@
 
 .sidebar {
-  @extend %flex;
+  // @extend %flex;
   flex-direction: column;
   align-items: center;
   position: fixed;
   background: #fff;
   left: 0;
   top: 0;
-  height: 100vh;
+  min-height: 100%;
+  border: 1px solid green;
   width: 350px;
   min-width: 350px;
+  padding: 0 20px;
   overflow: hidden;
   z-index: 100;
   justify-content: space-between;
+  margin-bottom: -100px;
+  &:after {
+    content: "";
+    display: block;
+    height: 100px;
+  }
+}
+
+.login-toggle {
+  display: block;
+  text-align: center;
+  margin: auto;
 }
 
 .search {
@@ -43,7 +57,7 @@
 input {
   border: 1px solid $color-primary;
   padding: 10px 25px;
-  width: 50%;
+  width: 70%;
   &[type="text"] {
   font-size: .9em;
   border-radius: 25px;
@@ -53,6 +67,10 @@ input {
 }
 
 .social-footer {
+  height: 100px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
   @extend %flex;
   justify-content: space-around;
   font-size: 2em;
@@ -78,9 +96,12 @@ h1 .c-logo {
 
 
 .login {
-  // border: 2px solid red;
+  display: none;
   flex: 0.5;
   width: 80%;
+  margin: auto;
+  margin-bottom: 32px;
+
   input {
     width: 100%;
     margin-bottom: 20px;
