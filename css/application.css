@@ -3,8 +3,6 @@
   box-sizing: border-box; }
 
 .sidebar {
-  flex-direction: column;
-  align-items: center;
   position: fixed;
   background: #fff;
   left: 0;
@@ -16,7 +14,6 @@
   padding: 0 20px;
   overflow: hidden;
   z-index: 100;
-  justify-content: space-between;
   margin-bottom: -100px; }
   .sidebar:after {
     content: "";
@@ -93,7 +90,8 @@ h1 .c-logo {
   padding-left: 350px;
   background: #252525;
   min-height: 100vh;
-  width: 100%; }
+  width: 100%;
+  overflow-x: hidden; }
 
 .album-cover {
   max-width: 100%;

@@ -1,8 +1,5 @@
 
 .sidebar {
-  // @extend %flex;
-  flex-direction: column;
-  align-items: center;
   position: fixed;
   background: #fff;
   left: 0;
@@ -14,7 +11,6 @@
   padding: 0 20px;
   overflow: hidden;
   z-index: 100;
-  justify-content: space-between;
   margin-bottom: -100px;
   &:after {
     content: "";
@@ -30,7 +26,6 @@
 }
 
 .search {
-  // margin-top: 6em;
   width: 100%;
   flex: 1;
   text-align: center;
