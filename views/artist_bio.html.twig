@@ -17,10 +17,14 @@
             {% for link in results.urls%}
             <h4><a href="{{link}}">{{link}}</a></h4>
             {% endfor %}
-            {{images.resource_uri}}
-            {% for image in images|slice(0,4) %}
+            {% for image in images|slice(0,1) %}
             <img src="{{image.resource_url}}"></img>
             {% endfor %}
+            <ul>
+            {% for release in releases %}
+            <li>{{release.title}}</li>
+            {% endfor%}
+            </ul>
 
         <!-- {% for result in results %}
             {{result.name}}

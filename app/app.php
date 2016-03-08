@@ -137,14 +137,14 @@
     });
 
     $app->get("/artist/{id}", function($id) use ($app){
-        https://api.discogs.com/artists/1982526
+        // https://api.discogs.com/artists/1982526
         $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
         $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
         $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
         $url = "https://api.discogs.com/";
 
         $results_url = $url . '/artists/' . $id . '?key=' . $consumerKey . '&secret=' . $consumerSecret;
-
+        // results curl
         $ch = curl_init();
         //Set the User-Agent Identifier
         curl_setopt($ch, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
@@ -158,10 +158,29 @@
         curl_close ($ch);
 
         $results_array = json_decode($output, true);
+
+
+        // releases curl
+        $releases_url = $url . '/artists/' . $id .'/releases'. '?key=' . $consumerKey . '&secret=' . $consumerSecret;
+        $ch2 = curl_init();
+        //Set the User-Agent Identifier
+        curl_setopt($ch2, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
+        //Set the URL of the page or file to download.
+        curl_setopt($ch2, CURLOPT_URL, $releases_url);
+        //Ask cURL to return the contents in a variable instead of simply echoing them
+        curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
+        //Execute the curl session
+        $output = curl_exec($ch2);
+        //close the session
+        curl_close ($ch2);
+
+        $releases_array = json_decode($output, true);
+        // print_r($releases_array['releases']);
         return $app['twig']->render("artist_bio.html.twig", array(
             'users' => User::getAll(),
             'results' => $results_array,
-            'images' => $results_array['images']
+            'images' => $results_array['images'],
+            'releases' => $releases_array['releases']
         ));
     });
 
