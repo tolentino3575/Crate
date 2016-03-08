@@ -117,10 +117,11 @@
       $id = 1;
       $test_record = new Record($title, $artist, $genre, $track, $release_date, $id);
       $test_record->save();
+
       //Act
       $result = Record::getAll();
       //Assert
-      $this->assertEquals($test_record, $result[0]);
+      $this->assertEquals([$test_record], $result);
     }
     function test_getAll()
     {
@@ -145,6 +146,7 @@
 
       //Act
       $result = Record::getAll();
+      var_dump($result);
       //Assert
       $this->assertEquals([$test_record, $test_record2], $result);
     }
@@ -225,6 +227,6 @@
       //Act
       $result = Record::find($test_record2->getId());
       //Assert
-      $this->assertEquals($test_record2, $result);
+      $this->assertEquals([$test_record2], $result);
     }
   }
