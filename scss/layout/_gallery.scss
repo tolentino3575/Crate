@@ -25,6 +25,10 @@
   &:hover {
     transform: scale(1.05);
   }
+  @media #{$medium} {
+    width: 225px;
+    height: 225px;
+  }
 }
 
 .portfolioContainer {
@@ -43,6 +47,10 @@
   position: absolute;
   width: 278px;
   height: 278px;
+  @media #{$medium}{
+    width: 225px;
+    height: 225px;
+  }
 }
 
 .album-cover {
@@ -50,7 +58,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  // border-radius: 2px;
   overflow: hidden;
   z-index: 10;
 }
@@ -82,6 +89,10 @@
   background-size: 270px 270px;
   transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
   transition: transform 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
+  @media #{$medium}{
+    background-size: 225px;
+    transform: translate3d(-4px, 0px, 0px) rotateZ(0deg);
+  }
 }
 
 .actual-record::after {
@@ -95,6 +106,12 @@
   left: 4px;
   width: 270px;
   height: 270px;
+  @media #{$medium}{
+    width: 225px;
+    height: 225px;
+    top: 0px;
+    left: 0px;
+  }
 }
 
 .release:hover > .actual-record {
@@ -112,7 +129,7 @@
 
 .release:hover > .album-title {
   opacity: 1;
-  transition: opacity 200ms 1ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
+  transition: opacity 225ms 1ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
 }
 
 .album-title p {

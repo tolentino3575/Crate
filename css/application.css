@@ -109,6 +109,10 @@ h1 .c-logo {
   transition: 0.3s ease-in-out; }
   .release:hover {
     transform: scale(1.05); }
+  @media (max-width: 1085px) {
+    .release {
+      width: 225px;
+      height: 225px; } }
 
 .portfolioContainer {
   flex-wrap: wrap;
@@ -122,6 +126,11 @@ h1 .c-logo {
   position: absolute;
   width: 278px;
   height: 278px; }
+  @media (max-width: 1085px) {
+    .album-cover,
+    .actual-record {
+      width: 225px;
+      height: 225px; } }
 
 .album-cover {
   background: url("../img/1.jpg");
@@ -155,6 +164,10 @@ h1 .c-logo {
   background-size: 270px 270px;
   transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
   transition: transform 800ms cubic-bezier(0.39, 0.575, 0.565, 1); }
+  @media (max-width: 1085px) {
+    .actual-record {
+      background-size: 225px;
+      transform: translate3d(-4px, 0px, 0px) rotateZ(0deg); } }
 
 .actual-record::after {
   background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0) 30%, rgba(214, 214, 214, 0.2) 100%), -webkit-linear-gradient(65deg, rgba(255, 255, 255, 0) 50%, rgba(255, 190, 190, 0.5) 100%);
@@ -167,6 +180,12 @@ h1 .c-logo {
   left: 4px;
   width: 270px;
   height: 270px; }
+  @media (max-width: 1085px) {
+    .actual-record::after {
+      width: 225px;
+      height: 225px;
+      top: 0px;
+      left: 0px; } }
 
 .release:hover > .actual-record {
   transform: translate3d(55px, 0px, 0px) rotateZ(40deg); }
@@ -181,7 +200,7 @@ h1 .c-logo {
 
 .release:hover > .album-title {
   opacity: 1;
-  transition: opacity 200ms 1ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+  transition: opacity 225ms 1ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
 
 .album-title p {
   color: rgba(255, 255, 255, 0.5);
