@@ -41,70 +41,114 @@ span {
   100% {
     transform: rotateZ(360deg); } }
 .gallery {
-  position: relative;
   padding-left: 350px;
   background: #252525;
   min-height: 100vh;
-  width: 100%;
-  border: 1px solid teal;
-  max-width: 3000px; }
+  width: 100%; }
 
-body {
-  font-family: Arial; }
-
-.portfolioContainer {
-  width: 100%;
-  margin: 0 auto;
-  border: 1px solid red; }
-
-.release {
-  border: 1px solid green;
-  width: 278px;
-  margin: 20px; }
-
-.portfolioFilter a {
-  margin-right: 10px;
-  color: #000;
-  text-decoration: none; }
-
-.portfolioFilter a.current {
-  font-weight: bold; }
-
-img {
+.album-cover {
   max-width: 100%;
   height: auto; }
 
-.isotope-item {
-  z-index: 2; }
+.release {
+  width: 278px;
+  margin-right: 60px;
+  margin-bottom: 60px;
+  height: 278px;
+  position: relative; }
 
-.isotope-hidden.isotope-item {
-  pointer-events: none;
-  z-index: 1; }
+.portfolioContainer {
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  width: 100%;
+  margin: 60px 0 0 60px; }
 
-.isotope,
-.isotope .isotope-item {
-  /* change duration value to whatever you like */
-  -webkit-transition-duration: 0.8s;
-  -moz-transition-duration: 0.8s;
-  transition-duration: 0.8s; }
+.album-cover,
+.actual-record {
+  position: absolute;
+  width: 278px;
+  height: 278px; }
 
-.isotope {
-  -webkit-transition-property: height, width;
-  -moz-transition-property: height, width;
-  transition-property: height, width; }
+.album-cover {
+  background: url("../img/1.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  z-index: 10; }
 
-.isotope .isotope-item {
-  -webkit-transition-property: -webkit-transform, opacity;
-  -moz-transition-property: -moz-transform, opacity;
-  transition-property: transform, opacity; }
+.album-cover::after,
+.release::before {
+  content: "";
+  position: absolute; }
+
+.release::before {
+  border-radius: 50%;
+  box-shadow: -20px 55px 25px rgba(28, 0, 0, 0.7);
+  left: 0;
+  bottom: 0px;
+  height: 12px;
+  width: 95%;
+  transform: perspective(800px) rotateX(70deg) scaleX(1.2) scaleY(0.9);
+  transition: width 1s ease;
+  z-index: -20; }
+
+.release:hover::before {
+  width: 105%; }
+
+.actual-record {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/953/vinilo_negro.png) no-repeat center center;
+  background-size: 270px 270px;
+  transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
+  transition: transform 800ms cubic-bezier(0.39, 0.575, 0.565, 1); }
+
+.actual-record::after {
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(255, 255, 255, 0) 30%, rgba(214, 214, 214, 0.2) 100%), -webkit-linear-gradient(65deg, rgba(255, 255, 255, 0) 50%, rgba(255, 190, 190, 0.5) 100%);
+  box-shadow: inset 0px 1px 1px rgba(255, 255, 255, 0.3), inset -1px 1px 2px rgba(135, 126, 125, 0.2), inset 0px 0px 2px 30px rgba(55, 55, 55, 0.1), inset 0px 0px 2px 19px rgba(25, 25, 25, 0.1), inset 0px 0px 1px 40px rgba(25, 25, 25, 0.2);
+  background-size: 270px 270px;
+  content: "";
+  border-radius: 100%;
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  width: 270px;
+  height: 270px; }
+
+.release:hover > .actual-record {
+  transform: translate3d(55px, 0px, 0px) rotateZ(40deg); }
+
+.album-title {
+  position: absolute;
+  top: 115%;
+  text-align: center;
+  opacity: 0.01;
+  width: 100%;
+  transition: opacity 400ms 0ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+
+.release:hover > .album-title {
+  opacity: 1;
+  transition: opacity 700ms 800ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+
+.album-title p {
+  color: rgba(200, 200, 200, 0.5);
+  font-family: 'Source Sans Pro', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.72em; }
 
 .container {
   max-width: 100%; }
 
-.sidebar, .container {
+.sidebar, .gallery, .portfolioContainer, .container {
   display: flex; }
 
 /* Web fonts --------*/
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility; }
+
 .logo h1 {
   font-family: "Monoton", cursive;
   font-weight: normal;

@@ -1,0 +1,6 @@
+// image source
+
+@mixin background-image($name) {
+  $url:"../img/#{$name}.jpg";
+  background: url($url);
+}
