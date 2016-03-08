@@ -12,12 +12,30 @@
         <ul>
         {% for result in results %}
             <img src='{{result.thumb}}'></img>
-            <!-- {{result.title}} -->
 
+            <!-- {{result.title}} -->
         {% endfor %}
+
+
+        <div class='paginate'>
+            {% if pages.page <= 1000 %}
+                {% set nextpage = pages.page + 1 %}
+            {% endif %}
+            <form action="/search/{{nextpage}}" method="get">
+                <button type="submit" name="button">next page</button>
+            </form>
+        </div>
+
+
         </ul>
         <form action="/search">
-            <input type="text" name="artist">
+            <label for="genre">Genre</label>
+            <input type="radio" name="filter">
+            <label for="genre">Artist</label>
+            <input type="radio" name="filter">
+            <label for="genre">Year</label>
+            <input type="radio" name="filter">
+            <input type="text" name="search_term">
             <button type="submit">Submit</button>
         </form>
     </body>
