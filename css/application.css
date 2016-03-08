@@ -17,25 +17,38 @@
   justify-content: space-between; }
 
 .search {
+  margin-top: 6em;
   width: 100%;
   flex: 1;
   text-align: center; }
 
-.search a {
+.sidebar a {
   text-decoration: none;
   color: #252525; }
 
 .search-form {
   margin-bottom: 2em; }
 
+input {
+  border: 1px solid #252525;
+  padding: 10px 25px;
+  width: 50%; }
+  input[type="text"] {
+    font-size: .9em;
+    border-radius: 25px;
+    color: #666666;
+    outline: none; }
+
 .social-footer {
+  justify-content: space-around;
   font-size: 2em;
   width: 100%;
-  text-align: center; }
+  margin: 30px 0;
+  color: #252525; }
 
 span {
   display: inline-block;
-  animation: rotate 1s infinite linear; }
+  animation: rotate 3s ease-out; }
 
 @keyframes rotate {
   100% {
@@ -55,7 +68,13 @@ span {
   margin-right: 60px;
   margin-bottom: 60px;
   height: 278px;
-  position: relative; }
+  position: relative;
+  -webkit-box-shadow: 11px 10px 19px -4px rgba(0, 0, 0, 0.68);
+  -moz-box-shadow: 11px 10px 19px -4px rgba(0, 0, 0, 0.68);
+  box-shadow: 11px 10px 19px -4px rgba(0, 0, 0, 0.68);
+  transition: 0.3s ease-in-out; }
+  .release:hover {
+    transform: scale(1.05); }
 
 .portfolioContainer {
   flex-wrap: wrap;
@@ -120,7 +139,7 @@ span {
 
 .album-title {
   position: absolute;
-  top: 115%;
+  top: 103%;
   text-align: center;
   opacity: 0.01;
   width: 100%;
@@ -128,11 +147,11 @@ span {
 
 .release:hover > .album-title {
   opacity: 1;
-  transition: opacity 700ms 800ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+  transition: opacity 200ms 1ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
 
 .album-title p {
-  color: rgba(200, 200, 200, 0.5);
-  font-family: 'Source Sans Pro', sans-serif;
+  color: rgba(255, 255, 255, 0.5);
+  font-family: sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.72em; }
@@ -140,7 +159,7 @@ span {
 .container {
   max-width: 100%; }
 
-.sidebar, .gallery, .portfolioContainer, .container {
+.sidebar, .social-footer, .gallery, .portfolioContainer, .container {
   display: flex; }
 
 /* Web fonts --------*/
@@ -155,5 +174,15 @@ html {
   font-size: 4.5em;
   color: #252525;
   margin-top: 3em; }
+
+button[type="submit"] {
+  -webkit-appearance: button;
+  cursor: pointer;
+  background-color: #B74ACC;
+  border: 0;
+  font-size: .8em;
+  border-radius: 25px;
+  margin-left: 10px;
+  padding: 10px 20px; }
 
 /*# sourceMappingURL=application.css.map */

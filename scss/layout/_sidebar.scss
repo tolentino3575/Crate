@@ -16,16 +16,14 @@
 }
 
 .search {
-  // border: 1px solid red;
+  margin-top: 6em;
   width: 100%;
-  // margin-top: 5em;
   flex: 1;
   text-align: center;
 }
 
 
-
-.search {
+.sidebar {
   a {
     text-decoration: none;
     color: $color-primary;
@@ -35,17 +33,32 @@
 .search-form {
   margin-bottom: 2em;
 }
-.social-footer {
 
-  // border: 1px solid green;
+input {
+  border: 1px solid $color-primary;
+  padding: 10px 25px;
+  width: 50%;
+  &[type="text"] {
+  font-size: .9em;
+  border-radius: 25px;
+  color: #666666;
+  outline: none;
+  }
+}
+
+.social-footer {
+  @extend %flex;
+  justify-content: space-around;
   font-size: 2em;
   width: 100%;
-  text-align: center;
+  margin: 30px 0;
+  color: $color-primary;
 }
 
 span {
   display: inline-block;
-  animation: rotate 1s infinite linear;
+  // animation: rotate 4s cubic-bezier(1,.48,.04,.96);
+  animation: rotate 3s ease-out;
 }
 
 @keyframes rotate {
