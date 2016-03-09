@@ -20,6 +20,8 @@
             <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
             {% if user is not empty %}
             Welcome, {{user.getUserName}}
+            {% else %}
+                {{ error }}
             {% endif %}
           </div>
           <!-- login button -->

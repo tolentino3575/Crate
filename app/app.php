@@ -191,9 +191,10 @@
             $_SESSION['user'] = $user;
             // print_r(User::getAll());
             if (isset($_SESSION['user'])){
-                return $app['twig']->render("collection.html.twig", array('user' => $_SESSION['user']));
+                return $app['twig']->render("index.html.twig", array('user' => $_SESSION['user']));
             } else {
-                return $app['twig']->render("invalid.html.twig");
+                $error = "Incorrect login info.";
+                return $app['twig']->render("index.html.twig", array('error' => $error));
             }
         });
 
@@ -208,7 +209,7 @@
             $record = Record::find($_POST['record_id']);
             $user = User::find($_POST['user_id']);
             $user->addRecord($record);
-            return $app['twig']->render("index.html.twig"));
+            return $app['twig']->render("index.html.twig");
         });
 
         //COLLECTION ROUTE
