@@ -24,12 +24,20 @@
             {% for track in tracklist|slice(0,1)%}
             <h3>{{track.title}}</h3>
             {%endfor%}
+            <h3>{{year}}</h3>
             <h3> tracklist: </h3>
             <ul>
                 {% for track in tracklist[0:]%}
                 <li>{{track.title}}</li>
                 {%endfor%}
             </ul>
+            <h3>Genres:</h3>
+            <ul>
+                {% for genre in genres %}
+                <li>{{genre}}</li>
+                {% endfor %}
+            </ul>
+
 
 
         <form action="/search">

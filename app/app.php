@@ -215,10 +215,12 @@
         // $releases_array = json_decode($output, true);
 
         // print_r($results_array['videos'][0]['uri']);
-        print_r($results_array['tracklist']);
+        print_r($results_array);
         return $app['twig']->render("release_page.html.twig", array(
             'users' => User::getAll(),
             'results' => $results_array,
+            'year' => $results_array['year'],
+            'genres' => $results_array['genres'],
             'tracklist' => $results_array['tracklist'],
             'artist' => $results_array['artists'][0],
             'images' => $results_array['images']
