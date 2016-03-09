@@ -1,6 +1,5 @@
-
-   <?php
-
+ <?php
+    session_start();
 
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__.'/../src/User.php';
@@ -22,7 +21,6 @@
     ));
 
     $app->get("/", function() use ($app){
-
         return $app['twig']->render("index.html.twig", array(
             'users' => User::getAll()
         ));
@@ -183,13 +181,25 @@
             'images' => $results_array['images'],
             'releases' => $releases_array['releases']
         ));
+    });
 
         //LOGIN ROUTE --- MOVE IF NEEDED
-        $app->post("/login", function() use ($app){
-            $username = $_POST['user_name'];
-            $password = $_POST['password'];
+        $app->get("/login", function() use ($app){
+            $user_name = $_GET['user_name'];
+            $password = $_GET['password'];
+            $user = User::login($user_name, $password);
+            $_SESSION['user'] = $user;
+            // print_r(User::getAll());
+            if (isset($_SESSION['user'])){
+                return $app['twig']->render(<user collections page>, , array('user' => $_SESSION['user']));
+            } else {
+                return $app['twig']->render("index.html.twig");
+            }
+            ));
         });
-    });
+
+        $app->get("" function() use ($app){
+        });
 
     return $app;
 ?>

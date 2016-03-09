@@ -1,52 +1,223 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title>CRATE</title>
-    </head>
-    <body>
-        <h1>Crate</h1>
-        <!-- foreach($artists_array['results'] as $img){
-            echo "<p><img src=".$img['thumb']. ">". $img['title'] ."</img></p>";
-        } -->
-        <ul>
-        {% for result in results %}
-            <img src='{{result.thumb}}'></img>
-            <p><a href ="/artist/{{result.id}}">{{result.title}}, {{result.id}}</a></p>
-            <!-- {{result.title}} -->
-        {% endfor %}
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Varela+Round|Monoton' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/application.css">
+    <script src="/../js/jquery-1.12.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/../js/scripts.js"></script>
 
-
-        <div class='paginate'>
-
-            {% if pages.page <= 1000 and pages.page >= 2 %}
-                {% set nextpage = pages.page + 1 %}
-                {% set prevpage = pages.page - 1 %}
-                <form action="/search/{{nextpage}}" method="get">
-                    <button type="submit" name="button">next page</button>
-                </form>
-                <form action="/search/{{prevpage}}" method="get">
-                    <button type="submit" name="button">prev page</button>
-                </form>
-            {% else %}
-            {% set nextpage = pages.page + 1 %}
-            <form action="/search/{{nextpage}}" method="get">
-                <button type="submit" name="button">next page</button>
-            </form>
+    <title>CRATE</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="sidebar">
+          <!-- logo -->
+          <div class="logo">
+            <h1><a href="#"><span class="c-logo">C</span>RATE<a href="#"></h1>
+            <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
+            {% if user is not empty %}
+            Welcome, {{user.getUserName}}
             {% endif %}
+          </div>
+          <!-- login button -->
+          <a class="login-toggle" href="#">LOG IN</a>
+          <!-- login forms -->
+          <div class="login">
+            <form class="login-form" action="/login">
+              <input type="text" name="user_name" placeholder="Username">
+              <input type="text" name="password" placeholder="Password">
+              <button type="submit" name="button"><i class="fa fa-play"></i></button>
+            </form>
+          </div>
+          <!-- search bar -->
+          <div class="search">
+            <form class="search-form" action="/search" method="">
+              <input type="text" name="search_term" placeholder="Search">
+              <button type="submit" name="button"><i class="fa fa-search"></i></button>
+            </form>
+          </div>
+
+          <!-- social icons -->
+          <div class="social-footer">
+            <a href="#"><i class="fa fa-github"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+          </div>
+      </div>
+      <div class="gallery">
+        <div class="portfolioContainer">
+
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record
+            <!-- toggle switch -->
+            <!-- <input class='tgl tgl-light' id='cb1' type='checkbox'>
+            <label class='tgl-btn' for='cb1'></label> -->
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+          <div class="release experimental">
+            <div class="album-cover"></div>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+            <p>Cool Record</p>
+            </figcaption>
+          </div>
+
         </div>
-
-
-        </ul>
-        <form action="/search">
-            <label for="genre">Genre</label>
-            <input type="radio" name="filter">
-            <label for="genre">Artist</label>
-            <input type="radio" name="filter">
-            <label for="genre">Year</label>
-            <input type="radio" name="filter">
-            <input type="text" name="search_term">
-            <button type="submit">Submit</button>
-        </form>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
