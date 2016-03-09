@@ -4,7 +4,7 @@
 
 March 11, 2016
 
-##### By Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie, Yvonna and Erik
+##### By Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie Duro, Yvonna Contreras and Erik Tolentino.
 
 ### Description
 
@@ -16,6 +16,11 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 * HTML
 * SCSS
 * PHP
+* Twig
+* PHPMyAdmin
+* Apache
+* PHPUnit
+* Silex
 * Bourbon
 * Atom
 * Terminal
@@ -28,4 +33,4 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 
 *This software is licensed under the MIT license.*
 
-&copy; 2016 **Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie, Yvonna and Erik**
+&copy;2016 **Molly Curtin, Lauryn Davis, Jeff Seymour, Eddie Duro, Yvonna Contreras and Erik Tolentino**

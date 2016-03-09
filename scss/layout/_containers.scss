@@ -1,0 +1,7 @@
+.container {
+  @extend %flex;
+  max-width: 100%;
+  @media #{$small} {
+    flex-direction: column;
+  }
+}

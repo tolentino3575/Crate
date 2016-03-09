@@ -1,1 +1,51 @@
 /* Web fonts --------*/
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+body {
+  font-family: $stack-varela;
+}
+
+.logo {
+  h1 {
+  font-family: $stack-monoton;
+  font-weight: normal;
+  font-size: 4.5em;
+  color: $color-primary;
+  margin-top: 3em;
+  margin-bottom: 0;
+  @media #{$medium} {
+    margin-top: 2em;
+  }
+  }
+  @media #{$medium} {
+    font-size: 0.8em;
+  }
+  @media #{$small} {
+    font-size: 1em;
+  }
+  p {
+    color: $light-grey;
+    width: 75%;
+    margin: auto;
+    font-size: .95em;
+    @media #{$medium} {
+      font-size: 1em;
+      width: 90%;
+    }
+    @media #{$small} {
+        font-size: 0.9em;
+        padding: 0 30px;
+        margin-top: -15px;
+    }
+  }
+}
+
+a {
+  &:hover {
+    color: #B74ACC;
+  }
+}
