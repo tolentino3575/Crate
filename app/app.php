@@ -13,6 +13,10 @@
     $DB = new PDO($server, $user, $password);
 
 
+    // session_start();
+    // if( isset($_SESSION['search_term'])){
+    //   echo "set";
+    // }
 
     $app = new Silex\Application();
 
@@ -22,9 +26,31 @@
     ));
 
     $app->get("/", function() use ($app){
+      $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
+      $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
+      $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
+      $url = "https://api.discogs.com/";
 
+      $results_url = $url . '/database/search?q=&key='. $consumerKey . '&secret=' . $consumerSecret;
+
+      $ch = curl_init();
+      //Set the User-Agent Identifier
+      curl_setopt($ch, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
+      //Set the URL of the page or file to download.
+      curl_setopt($ch, CURLOPT_URL, $results_url);
+      //Ask cURL to return the contents in a variable instead of simply echoing them
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+      //Execute the curl session
+      $output = curl_exec($ch);
+      //close the session
+      curl_close ($ch);
+
+      $results_array = json_decode($output, true);
+      $pages_array = $results_array['pagination'];
         return $app['twig']->render("index.html.twig", array(
-            'users' => User::getAll()
+            'users' => User::getAll(),
+            'results' => $results_array['results'],
+            'pages' => $pages_array
         ));
     });
 
@@ -33,8 +59,13 @@
         $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
         $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
         $url = "https://api.discogs.com/"; // add the resource info to the url. Ex. releases/1
+        session_start();
+        $search_term = $_GET["search_term"];
+        $_SESSION['search_term'] = $search_term;
+        print_r($_SESSION['search_term']);
+
         if(isset($_GET['genre'])){
-            $results_url = $url . '/database/search?genre='. urlencode($_GET["search_term"]) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?genre='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -50,7 +81,7 @@
 
             $results_array = json_decode($output, true);
         } else if (isset($_GET['artist'])) {
-            $results_url = $url . '/database/search?artist='. urlencode($_GET["search_term"]) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?artist='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -66,7 +97,7 @@
 
             $results_array = json_decode($output, true);
         } else if (isset($_GET['year'])) {
-            $results_url = $url . '/database/search?year='. urlencode($_GET["search_term"]) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?year='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -82,7 +113,7 @@
 
             $results_array = json_decode($output, true);
         } else {
-            $results_url = $url . '/database/search?q='. urlencode($_GET["search_term"]) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?q='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -99,7 +130,7 @@
             $results_array = json_decode($output, true);
         }
         $pages_array = $results_array['pagination'];
-        print_r($results_array);
+        // print_r($results_array);
         return $app['twig']->render("index.html.twig", array(
             'users' => User::getAll(),
             'results' => $results_array['results'],
@@ -108,12 +139,15 @@
     });
 
     $app->get("/search/{page}", function($page) use ($app){
+        session_start();
+        print_r($_SESSION['search_term']);
         $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
         $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
         $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
         $url = "https://api.discogs.com/"; // add the resource info to the url. Ex. releases/1
 
-        $results_url = $url . '/database/search?q=' . urlencode($_GET["search_term"]). '&per_page=50&secret=' . $consumerSecret . '&page='. $page . '&key='. $consumerKey;
+
+        $results_url = $url . '/database/search?q=' . urlencode($_SESSION['search_term']) . '&per_page=50&secret=' . $consumerSecret . '&page='. $page . '&key='. $consumerKey;
         //initialize the session
         $ch = curl_init();
         //Set the User-Agent Identifier
