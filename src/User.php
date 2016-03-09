@@ -1,17 +1,40 @@
 <?php
+<<<<<<< HEAD
+
+=======
+>>>>>>> master
     class User
     {
         private $user_name;
         private $password;
         private $id;
 
+<<<<<<< HEAD
+        function __construct($user_name, $password, $id = null){
+=======
         function __construct($user_name, $password, $id=null)
         {
+>>>>>>> master
             $this->user_name = $user_name;
             $this->password = $password;
             $this->id = $id;
         }
 
+<<<<<<< HEAD
+        function getUserName(){
+            return $this->user_name;
+        }
+
+        function getPassword(){
+            return $this->password;
+        }
+
+        function getId(){
+            return $this->id;
+        }
+
+        function save(){
+=======
         function setUserName($new_user_name)
         {
             $this->user_name = (string) $new_user_name;
@@ -39,10 +62,22 @@
 
         function save()
         {
+>>>>>>> master
             $GLOBALS['DB']->exec("INSERT INTO users (user_name, password) VALUES ('{$this->getUserName()}', '{$this->getPassword()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
+<<<<<<< HEAD
+        static function getAll(){
+            $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
+
+            $users = array();
+            foreach($returned_users as $user){
+                $username = $user['user_name'];
+                $password = $user['password'];
+                $id = $user['id'];
+                $new_user = new User($username, $password, $id);
+=======
         static function getAll()
         {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users");
@@ -52,6 +87,7 @@
                 $password = $user['password'];
                 $id = $user['id'];
                 $new_user = new User($user_name, $password, $id);
+>>>>>>> master
                 array_push($users, $new_user);
             }
             return $users;
@@ -61,6 +97,9 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM users");
         }
+<<<<<<< HEAD
+    }
+=======
 
         function addRecord($record)
         {
@@ -108,4 +147,5 @@
 
     }
 
+>>>>>>> master
 ?>

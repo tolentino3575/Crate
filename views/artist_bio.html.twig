@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>CRATE</title>
+    </head>
+    <body>
+        <h1>Crate</h1>
+        <!-- foreach($artists_array['results'] as $img){
+            echo "<p><img src=".$img['thumb']. ">". $img['title'] ."</img></p>";
+        } -->
+            <h1>Artist:</h1>
+            <h2>{{results.name}}</h1>
+            <h1>Real Name: </h1>
+            <h2>{{results.realname}}</h1>
+            {{results.profile}}
+            {% for link in results.urls%}
+            <h4><a href="{{link}}">{{link}}</a></h4>
+            {% endfor %}
+            {% for image in images|slice(0,1) %}
+            <img src="{{image.resource_url}}"></img>
+            {% endfor %}
+            <ul>
+            {% for release in releases %}
+            <img src="{{release.thumb}}"></img>
+            <li>{{release.title}}</li>
+            {% endfor%}
+            </ul>
+
+        <!-- {% for result in results %}
+            {{result.name}}
+            <p><a href ="/artist/{{result.id}}">{{result.title}}, {{result.id}}</a></p>
+
+        {% endfor %} -->
+
+        <form action="/search">
+            <label for="genre">Genre</label>
+            <input type="radio" name="filter">
+            <label for="genre">Artist</label>
+            <input type="radio" name="filter">
+            <label for="genre">Year</label>
+            <input type="radio" name="filter">
+            <input type="text" name="search_term">
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html>
