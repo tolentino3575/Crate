@@ -1,4 +1,5 @@
 {
+<<<<<<< HEAD
     "autoload": {
         "psr-0": { "": "src/" }
     },
@@ -10,5 +11,11 @@
         "symfony/security": "^3.0",
         "lusitanian/oauth": "~0.3",
         "ricbra/php-discogs-api": "^1.1"
+=======
+    "require": {
+        "silex/silex": "~1.1",
+        "twig/twig": "~1.0",
+        "phpunit/phpunit": "4.5.*"
+>>>>>>> master
     }
 }
