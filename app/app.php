@@ -4,10 +4,10 @@
 
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__.'/../src/User.php';
+    require_once __DIR__.'/../src/Record.php';
 
 
-
-    $server = 'mysql:host=localhost;dbname=discogs';
+    $server = 'mysql:host=localhost:8889;dbname=discogs';
     $user = 'root';
     $password = 'root';
     $DB = new PDO($server, $user, $password);
@@ -183,6 +183,12 @@
             'images' => $results_array['images'],
             'releases' => $releases_array['releases']
         ));
+
+        //LOGIN ROUTE --- MOVE IF NEEDED
+        $app->post("/login", function() use ($app){
+            $username = $_POST['user_name'];
+            $password = $_POST['password'];
+        });
     });
 
     return $app;

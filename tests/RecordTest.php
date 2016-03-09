@@ -5,7 +5,7 @@
 	*/
   require_once "src/Record.php";
 
-	$server = "mysql:host=localhost;dbname=discogs_test";
+	$server = "mysql:host=localhost:8889;dbname=discogs_test";
 	$username = "root";
 	$password = "root";
 	$DB = new PDO($server, $username, $password);
