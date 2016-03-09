@@ -253,48 +253,92 @@ h1 .c-logo {
   font-family: "Roboto", sans-serif;
   font-weight: 300; }
 
-.release-info {
-  background-color: #252525;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  margin-left: 350px;
-  color: #fff;
+ul {
+  padding-left: 0;
   font-family: "Roboto", sans-serif;
-  border: 2px solid purple; }
+  font-weight: 100;
+  letter-spacing: .04em; }
+
+.release-info {
+  justify-content: center;
+  align-items: center; }
 
 .artist {
-  font-weight: 300px;
+  border-bottom: 1px solid #B74ACC;
+  padding-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  display: block;
+  font-weight: 100;
   text-transform: uppercase;
   font-size: 2em;
-  font-weight: 100; }
+  letter-spacing: .04em; }
+
+.title {
+  font-family: "Roboto", sans-serif;
+  display: block;
+  font-size: 1.5em;
+  font-weight: 100;
+  line-height: 1.5em;
+  padding-top: 15px; }
 
 .row-container {
-  width: 90%; }
+  width: 1080px;
+  height: 1080px;
+  flex-wrap: wrap; }
 
-.row {
-  display: flex;
-  width: 100%;
-  height: 50vh;
-  border: 2px solid red; }
+.track {
+  display: block;
+  font-size: 1.7em;
+  padding-bottom: 10px; }
 
-.track-list {
-  display: flex;
-  width: 100%;
-  height: 50vh;
-  border: 2px solid green; }
+.square-2 {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-self: flex-end;
+  width: 50%;
+  height: 50%;
+  background: #f1e4da;
+  opacity: 0.9;
+  color: #4d4d4d;
+  font-size: .9em;
+  line-height: 1.4em;
+  letter-spacing: 0.1em; }
 
-.right-sidebar {
-  border: 2px solid yellow;
-  width: 10%; }
+.square-1 {
+  width: 50%;
+  height: 50%;
+  font-family: "Roboto", sans-serif;
+  weight: 100;
+  text-transform: uppercase; }
+  .square-1 span {
+    display: block; }
 
 .image {
+  font-family: "Varela Round", sans-serif;
+  width: 50%;
+  height: 50%;
+  justify-content: space-between; }
+  .image img {
+    justify-content: flex-start;
+    max-width: 100%;
+    max-height: 100%; }
+
+.info {
+  font-family: "Roboto", sans-serif;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 50%; }
-  .image img {
-    max-width: 60%;
-    max-height: 60%; }
+  line-height: 2em;
+  color: #e0e0e0;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  font-size: 1.2em; }
+  .info li {
+    list-style: none;
+    padding: 0; }
 
 .container {
   max-width: 100%; }
@@ -302,7 +346,7 @@ h1 .c-logo {
     .container {
       flex-direction: column; } }
 
-.social-footer, .gallery, .gallery-header, .portfolioContainer, .release-info, .image, .container {
+.social-footer, .gallery, .gallery-header, .portfolioContainer, .release-info, .row-container, .square-2, .image, .info, .container {
   display: flex; }
 
 .gallery-header {
@@ -320,6 +364,15 @@ h1 .c-logo {
     display: block;
     padding-bottom: 5px;
     border-bottom: 1px solid #B74ACC; }
+
+.release-info {
+  background-color: #252525;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  margin-left: 350px;
+  color: #fff;
+  font-family: "Roboto", sans-serif; }
 
 /* Web fonts --------*/
 html {
