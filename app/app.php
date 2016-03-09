@@ -31,7 +31,7 @@
       $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
       $url = "https://api.discogs.com/";
 
-      $results_url = $url . '/database/search?q=&key='. $consumerKey . '&secret=' . $consumerSecret;
+      $results_url = $url . '/database/search?q=?&per_page=51&key='. $consumerKey . '&secret=' . $consumerSecret;
 
       $ch = curl_init();
       //Set the User-Agent Identifier
@@ -62,10 +62,10 @@
         session_start();
         $search_term = $_GET["search_term"];
         $_SESSION['search_term'] = $search_term;
-        print_r($_SESSION['search_term']);
+        // print_r($_SESSION['search_term']);
 
         if(isset($_GET['genre'])){
-            $results_url = $url . '/database/search?genre='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?genre='. urlencode($_SESSION['search_term']) . '&per_page=51&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -97,7 +97,7 @@
 
             $results_array = json_decode($output, true);
         } else if (isset($_GET['year'])) {
-            $results_url = $url . '/database/search?year='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?year='. urlencode($_SESSION['search_term']) . '&per_page=51&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -113,7 +113,7 @@
 
             $results_array = json_decode($output, true);
         } else {
-            $results_url = $url . '/database/search?q='. urlencode($_SESSION['search_term']) . '&key='. $consumerKey . '&secret=' . $consumerSecret;
+            $results_url = $url . '/database/search?q='. urlencode($_SESSION['search_term']) . '&per_page=51&key='. $consumerKey . '&secret=' . $consumerSecret;
             //initialize the session
             $ch = curl_init();
             //Set the User-Agent Identifier
@@ -140,14 +140,14 @@
 
     $app->get("/search/{page}", function($page) use ($app){
         session_start();
-        print_r($_SESSION['search_term']);
+        // print_r($_SESSION['search_term']);
         $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
         $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
         $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
         $url = "https://api.discogs.com/"; // add the resource info to the url. Ex. releases/1
 
 
-        $results_url = $url . '/database/search?q=' . urlencode($_SESSION['search_term']) . '&per_page=50&secret=' . $consumerSecret . '&page='. $page . '&key='. $consumerKey;
+        $results_url = $url . '/database/search?q=' . urlencode($_SESSION['search_term']) . '&per_page=51&secret=' . $consumerSecret . '&page='. $page . '&key='. $consumerKey;
         //initialize the session
         $ch = curl_init();
         //Set the User-Agent Identifier
