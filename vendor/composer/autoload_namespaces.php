@@ -11,4 +11,7 @@ return array(
     'Psr\\Log\\' => array($vendorDir . '/psr/log'),
     'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
     'Pimple' => array($vendorDir . '/pimple/pimple/lib'),
+    'OAuth\\Unit' => array($vendorDir . '/lusitanian/oauth/tests'),
+    'OAuth' => array($vendorDir . '/lusitanian/oauth/src'),
+    'Discogs' => array($vendorDir . '/ricbra/php-discogs-api/lib'),
 );
