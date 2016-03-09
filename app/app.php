@@ -1,6 +1,6 @@
 
    <?php
-
+   session_start();
 
     require_once __DIR__.'/../vendor/autoload.php';
     require_once __DIR__.'/../src/User.php';
@@ -59,7 +59,6 @@
         $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
         $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
         $url = "https://api.discogs.com/"; // add the resource info to the url. Ex. releases/1
-        session_start();
         $search_term = $_GET["search_term"];
         $_SESSION['search_term'] = $search_term;
         // print_r($_SESSION['search_term']);
@@ -139,7 +138,6 @@
     });
 
     $app->get("/search/{page}", function($page) use ($app){
-        session_start();
         // print_r($_SESSION['search_term']);
         $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
         $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
