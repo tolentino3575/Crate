@@ -165,19 +165,15 @@
   text-align: center;
   opacity: 1;
   width: 100%;
-  // transition: opacity 400ms 0ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
 }
 
-// .release:hover > .album-title {
-//   opacity: 1;
-//   transition: opacity 225ms 1ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
-// }
 
 .album-title p {
-  color: rgba(255,255,255,0.5);
+  color: $crate-beige;
   font-family: sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.72em;
-  font-family: 'Roboto';
+  font-family: $stack-roboto;
+  font-weight: 300;
 }
