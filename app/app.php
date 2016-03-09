@@ -183,7 +183,7 @@
         ));
     });
 
-        //LOGIN ROUTE --- MOVE IF NEEDED
+        //LOGIN ROUTE
         $app->get("/login", function() use ($app){
             $user_name = $_GET['user_name'];
             $password = $_GET['password'];
@@ -191,15 +191,32 @@
             $_SESSION['user'] = $user;
             // print_r(User::getAll());
             if (isset($_SESSION['user'])){
-                return $app['twig']->render(<user collections page>, , array('user' => $_SESSION['user']));
+                return $app['twig']->render("collection.html.twig", array('user' => $_SESSION['user']));
             } else {
-                return $app['twig']->render("index.html.twig");
+                return $app['twig']->render("invalid.html.twig");
             }
-            ));
         });
 
-        $app->get("" function() use ($app){
+        //VIEW SINGLE RECORD ROUTE
+        $app->get("/view_record/{id}", function($id) use ($app){
+            $record = Record::find($id);
+            return $app['twig']->render("record.html.twig", array('record' => $record));
         });
+
+        //ADD RECORD TO COLLECTION ROUTE
+        $app->post("/add_record", function() use ($app){
+            $record = Record::find($_POST['record_id']);
+            $user = User::find($_POST['user_id']);
+            $user->addRecord($record);
+            return $app['twig']->render("index.html.twig"));
+        });
+
+        //COLLECTION ROUTE
+        $app->get("/view_collection/{id}", function($id) use ($app){
+            $user = User::find($id);
+            return $app['twig']->render("collection.html.twig", array('records' => $user->getRecords()));
+        });
+
 
     return $app;
 ?>

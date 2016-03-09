@@ -134,7 +134,7 @@
                     if ($user->getUserName() == $user_name && $user->getPassword() == $password) {
                         $found_user = $user;
                     } else {
-                        return 'NO USER OR PASSWORD EXISTS';
+                        echo 'NO USER OR PASSWORD EXISTS';
                     }
                 }
                 return $found_user;
