@@ -159,21 +159,20 @@
   transform: translate3d(55px, 0px, 0px) rotateZ(40deg);
 }
 
+figcaption {
+  padding-top: 0.5em;
+}
 .album-title {
   position: absolute;
   top: 103%;
   text-align: center;
   opacity: 1;
   width: 100%;
+  a {
+  @extend %links;
+  }
 }
 
-
 .album-title p {
-  color: $crate-beige;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.72em;
-  font-family: $stack-roboto;
-  font-weight: 300;
+  @extend %links;
 }

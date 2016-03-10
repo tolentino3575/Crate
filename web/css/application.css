@@ -237,21 +237,15 @@ h1 .c-logo {
 .release:hover > .actual-record {
   transform: translate3d(55px, 0px, 0px) rotateZ(40deg); }
 
+figcaption {
+  padding-top: 0.5em; }
+
 .album-title {
   position: absolute;
   top: 103%;
   text-align: center;
   opacity: 1;
   width: 100%; }
-
-.album-title p {
-  color: #f1e4da;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.72em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300; }
 
 ul {
   padding-left: 0;
@@ -320,6 +314,7 @@ ul {
     display: block; }
 
 .plus {
+  color: #f1e4da;
   position: absolute;
   display: block;
   top: 10%;
@@ -330,6 +325,7 @@ ul {
     color: #19e6b3; }
 
 .minus {
+  color: #f1e4da;
   position: absolute;
   display: block;
   top: 51%;
@@ -350,6 +346,8 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%); }
+  .my-collection:hover {
+    color: #B74ACC; }
 
 .image {
   font-family: "Varela Round", sans-serif;
@@ -409,6 +407,15 @@ ul {
   margin-left: 350px;
   color: #fff;
   font-family: "Roboto", sans-serif; }
+
+.album-title a, .album-title p {
+  text-decoration: none;
+  color: #f1e4da;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 0.72em; }
 
 /* Web fonts --------*/
 html {

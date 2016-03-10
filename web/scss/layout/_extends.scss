@@ -29,3 +29,13 @@
   color: #fff;
   font-family: $stack-roboto;
 }
+
+%links {
+  text-decoration: none;
+  color: $crate-beige;
+  font-family: $stack-roboto;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 0.72em;
+}

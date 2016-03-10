@@ -84,6 +84,7 @@ ul {
 }
 
 .plus {
+  color: $crate-beige;
   position: absolute;
   display: block;
   top: 10%;
@@ -96,6 +97,7 @@ ul {
 }
 
 .minus {
+  color: $crate-beige;
   position: absolute;
   display: block;
   top: 51%;
@@ -118,18 +120,17 @@ ul {
   top: 50%;
   left: 50%;
   transform: translate(-50%);
+  &:hover {
+    color: $color-accent;
+  }
 }
 
 .image {
   font-family: $stack-varela;
   width: 50%;
   height: 50%;
-  // border: 1px solid red;
   @extend %flex;
-  // align-items: center;
   justify-content: space-between;
-  // min-width: 640px;
-  // width: 1000px;
   img {
     justify-content: flex-start;
     max-width: 100%;
