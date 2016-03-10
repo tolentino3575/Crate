@@ -1,10 +1,12 @@
 .gallery {
+  flex-direction: column;
   @extend %flex;
   padding-left: 350px;
   background: $color-primary;
   min-height: 100vh;
   width: 100%;
   overflow-x: hidden;
+  padding-right: 60px;
   @media #{$medium} {
     padding-left: 275px;
   }
@@ -15,13 +17,18 @@
 
 .album-cover {
   max-width: 100%;
-  height: auto;
 }
+
+.gallery-header {
+  @extend %flex;
+  @extend %gallery-header;
+}
+
 
 .release {
   width: 278px;
   margin-right: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   height: 278px;
   position: relative;
   -webkit-box-shadow: 11px 10px 19px -4px rgba(0,0,0,0.68);
@@ -47,7 +54,7 @@
   justify-content: space-around;
   align-content: space-around;
   width: 100%;
-  margin: 60px 0 0 60px;
+  margin: 30px 0 0 60px;
 }
 
 // cool record effect //
@@ -67,11 +74,21 @@
   }
 }
 
+.album-cover-2 {
+  // @include background-image('1');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
+  width: 278px;
+  overflow: hidden;
+  z-index: 10;
+}
+
 .album-cover {
-  @include background-image('1');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+  // @include background-image('1');
+  // background-position: center;
+  // background-repeat: no-repeat;
+  // background-size: cover;
   overflow: hidden;
   z-index: 10;
 }
@@ -146,20 +163,17 @@
   position: absolute;
   top: 103%;
   text-align: center;
-  opacity: 0.01;
+  opacity: 1;
   width: 100%;
-  transition: opacity 400ms 0ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
 }
 
-.release:hover > .album-title {
-  opacity: 1;
-  transition: opacity 225ms 1ms cubic-bezier(0.445, 0.050, 0.550, 0.950);
-}
 
 .album-title p {
-  color: rgba(255,255,255,0.5);
+  color: $crate-beige;
   font-family: sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
   font-size: 0.72em;
+  font-family: $stack-roboto;
+  font-weight: 300;
 }
