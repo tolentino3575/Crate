@@ -300,6 +300,10 @@ ul {
   width: 1080px;
   height: 1080px;
   flex-wrap: wrap; }
+  @media (max-width: 1400px) {
+    .row-container {
+      width: 900px;
+      height: 900px; } }
 
 .track {
   display: block;
@@ -319,6 +323,9 @@ ul {
   font-size: .9em;
   line-height: 1.4em;
   letter-spacing: 0.1em; }
+  @media (max-width: 1400px) {
+    .square-2 {
+      line-height: 1.1em; } }
 
 .square-1 {
   position: relative;
@@ -368,6 +375,9 @@ ul {
   transform: translate(-50%); }
   .my-collection:hover {
     color: #B74ACC; }
+  @media (max-width: 1400px) {
+    .my-collection {
+      font-size: 1.1em; } }
 
 .image {
   font-family: "Varela Round", sans-serif;

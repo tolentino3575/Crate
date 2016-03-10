@@ -38,6 +38,11 @@ ul {
   width: 1080px;
   height: 1080px;
   flex-wrap: wrap;
+
+  @media #{$big-medium} {
+    width: 900px;
+    height: 900px;
+  }
 }
 
 
@@ -62,8 +67,9 @@ ul {
   font-size: .9em;
   line-height: 1.4em;
   letter-spacing: 0.1em;
-  ol {
 
+  @media #{$big-medium} {
+    line-height: 1.1em;
   }
 }
 
@@ -122,6 +128,10 @@ ul {
   transform: translate(-50%);
   &:hover {
     color: $color-accent;
+  }
+
+  @media #{$big-medium} {
+    font-size: 1.1em;
   }
 }
 
