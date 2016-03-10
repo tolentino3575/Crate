@@ -11,7 +11,7 @@ class Record
   private $label;
   private $id;
 
-  function __construct($title, $artist, $genre, $track, $year, $image = null, $label = null, $id = null)
+  function __construct($title, $artist, $genre, $track, $year, $image, $label, $id = null)
   {
     $this->title = $title;
     $this->artist = $artist;

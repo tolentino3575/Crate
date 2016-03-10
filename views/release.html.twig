@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/../css/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100italic,100,300,300italic,400italic|Monoton|Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/../css/application.css">
+    <script src="../web/js/jquery-1.12.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/../js/scripts.js"></script>
+
+    <title>CRATE</title>
+  </head>
+  <body>
+    <div class="container">
+    <div class="sidebar">
+      <!-- logo -->
+      <div class="logo">
+        <h1>
+          <a href="/"><span class="c-logo">C</span>RATE
+          <a href="#">
+        </h1>
+        <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
+      </div>
+      <!-- login button -->
+      <a class="login-toggle" href="#">LOG IN</a>
+      <!-- login forms -->
+      <div class="login">
+        <form class="login-form">
+          <input type="text" name="name" placeholder="Username">
+          <input type="text" name="name" placeholder="Password">
+          <a href="collection.html"><button type="button" name="button"><i class="fa fa-play"></i></button></a>
+        </form>
+      </div>
+      <!-- search bar -->
+      <div class="search">
+        <form class="search-form" action="/search">
+          <input type="text" name="search_term" placeholder="Search">
+          <a href=""><button type="submit" name="button"><i class="fa fa-search"></i></button></a>
+        </form>
+      </div>
+      <!-- social icons -->
+      <div class="social-footer">
+        <a href="https://github.com/patternandshape/crate"><i class="fa fa-github"></i></a>
+        <a href="#"><i class="fa fa-facebook"></i></a>
+        <a href="#"><i class="fa fa-twitter"></i></a>
+      </div>
+    </div>
+    <div class="release-info">
+      <div class="row-container">
+          <div class="image">
+              {% for image in images|slice(0,1) %}
+              <img src="{{image.resource_url}}"></img>
+              {% endfor %}
+          </div>
+            <div class="info">
+              <div class="main-info">
+                <span class="artist">{{artist.name}}</span>
+                {% for track in tracklist|slice(0,1)%}
+                <span class="title">{{track.title}}</span>
+                {% endfor %}
+              </div>
+              <ul>
+                <li>Label: {{label.name}}</li>
+                <li>Year: {{year}}</li>
+                {% for genre in genres %}
+                <li>Genre: {{genre}}</li>
+                {% endfor %}
+              </ul>
+          </div>
+            <div class="square-1">
+             <form action="/add_record" method="post">
+                <button type="submit" name="button">Go</button>
+             </form>
+             <form action="/delete_record/{{ record.getId }}" method="post">
+                 <input type="hidden" name="_method" value="delete">
+                <button type="submit" name="button">Go</button>
+             </form>
+            </div>
+            <div class="square-2">
+              <span class="track">Track List</span>
+                <ol>
+                {% for track in tracklist[0:]%}
+                  <li>{{track.title}}</li>
+                {% endfor %}
+                </ol>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>
