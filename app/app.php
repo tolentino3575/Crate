@@ -49,7 +49,7 @@
       $results_array = json_decode($output, true);
       $pages_array = $results_array['pagination'];
         return $app['twig']->render("index.html.twig", array(
-            'users' => User::getAll(),
+            'user' => $_SESSION['user'],
             'results' => $results_array['results'],
             'pages' => $pages_array
         ));
@@ -162,7 +162,6 @@
         curl_close ($ch);
 
         $results_array = json_decode($output, true);
-        $type = $results_array['type'];
         $pages_array = $results_array['pagination'];
 
         return $app['twig']->render("search.html.twig", array(
@@ -243,9 +242,37 @@
                     'collection' => $user->getRecords()
                 ));
             } else {
+                $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
+                $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
+                $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
+                $url = "https://api.discogs.com/";
+
+                $results_url = $url . '/database/search?q=&per_page=50&key='. $consumerKey . '&secret=' . $consumerSecret;
+
+                $ch = curl_init();
+                //Set the User-Agent Identifier
+                curl_setopt($ch, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
+                //Set the URL of the page or file to download.
+                curl_setopt($ch, CURLOPT_URL, $results_url);
+                //Ask cURL to return the contents in a variable instead of simply echoing them
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+                //Execute the curl session
+                $output = curl_exec($ch);
+                //close the session
+                curl_close ($ch);
+
+                $results_array = json_decode($output, true);
                 $error = "Incorrect login info.";
-                return $app['twig']->render("index.html.twig", array('error' => $error));
+                return $app['twig']->render("index.html.twig", array(
+                    'error' => $error,
+                    'results' => $results_array['results']
+            ));
             }
+        });
+
+        $app->get("/logout", function() use ($app){
+            $_SESSION['user'] = null;
+            return $app['twig']->render("index.html.twig");
         });
 
         //VIEW SINGLE RECORD ROUTE
@@ -300,32 +327,47 @@
             $images = $images[0];
             $id = null;
 
-            $records = $_SESSION['user']->getRecords();
-            $found_record = null;
 
-            foreach($records as $record){
-                $record_name = $record->getTitle();
-                $record_artist = $record->getArtist();
-                if($record_name == $title && $record_artist == $artist ){
-                    $error = "Already in your collection";
-                    return $app['twig']->render("release.html.twig", array('error' => $error));
-                } else {
-                    $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
-                    $new_record->save();
+
+
+            if(isset($_SESSION['user'])){
+                $records = $_SESSION['user']->getRecords();
+                $found_record = null;
+                foreach($records as $record){
+                    $record_name = $record->getTitle();
+                    $record_artist = $record->getArtist();
+                    if($record_name == $title && $record_artist == $artist ){
+                        $error = "Already in your collection";
+                        return $app['twig']->render("release.html.twig", array(
+                            'error' => $error,
+                            'user' => $_SESSION['user'],
+                            'results' => $results_array,
+                            'label' => $results_array['labels'][0],
+                            'year' => $results_array['year'],
+                            'genres' => $results_array['genres'],
+                            'tracklist' => $results_array['tracklist'],
+                            'artist' => $results_array['artists'][0],
+                            'images' => $results_array['images']
+                        ));
+                    }
                 }
-
-            }
-
-
-        // if record id is in the db
-            // then can't add again
-            // return record already in collection
-        // else
-            // add it to collection
-
-
-
-            $_SESSION['user']->addRecord($new_record);
+            } elseif(!isset($_SESSION['user'])) {
+                        $error = "Please login to use feature.";
+                        return $app['twig']->render("release.html.twig", array(
+                            'error' => $error,
+                            'user' => $_SESSION['user'],
+                            'results' => $results_array,
+                            'label' => $results_array['labels'][0],
+                            'year' => $results_array['year'],
+                            'genres' => $results_array['genres'],
+                            'tracklist' => $results_array['tracklist'],
+                            'artist' => $results_array['artists'][0],
+                            'images' => $results_array['images']));
+            } else {
+                        $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
+                        $new_record->save();
+                        $_SESSION['user']->addRecord($new_record);
+                    }
             return $app['twig']->render("release.html.twig", array(
                 'user' => $_SESSION['user'],
                 'results' => $results_array,
@@ -347,9 +389,12 @@
         });
 
         //COLLECTION ROUTE
-        $app->get("/view_collection/{id}", function($id) use ($app){
+        $app->get("/collection", function() use ($app){
             $user = $_SESSION['user'];
-            return $app['twig']->render("collection.html.twig", array('collection' => $user->getRecords()));
+            return $app['twig']->render("collection.html.twig", array(
+                'collection' => $user->getRecords(),
+                'user' => $user
+            ));
         });
 
 

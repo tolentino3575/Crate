@@ -18,12 +18,12 @@
           <!-- logo -->
           <div class="logo">
 
-            <h1><a href="#"><span class="c-logo">C</span>RATE<a href="#"></h1>
+            <h1><a href="#"><span class="c-logo">C</span>RATE<a href="#"></a></h1>
             <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
             {% if user is not empty %}
-            Welcome, {{user.getUserName}}
+            <p>Welcome, <a href="/collection"><b>{{user.getUserName}}</b></a></p>
             {% else %}
-                {{ error }}
+            <p>{{ error }}</p>
             {% endif %}
 
           </div>
