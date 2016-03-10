@@ -168,8 +168,30 @@ figcaption {
   text-align: center;
   opacity: 1;
   width: 100%;
-  a {
+
+  .record-name {
+  padding-right: 10px;
   @extend %links;
+  &:hover {
+    color: $color-accent;
+  }
+  }
+  .fa-plus {
+    color: $color-accent;
+    padding-right: 10px;
+    &:hover {
+      color: $red;
+    }
+  }
+  .fa-minus {
+    color: $color-accent;
+    padding-left: 10px;
+    &:hover {
+      color: $kelly-green;
+    }
+  }
+  .slash {
+    color: $crate-beige;
   }
 }
 

@@ -92,7 +92,7 @@ ul {
   font-size: 8em;
   font-weight: 100;
     &:hover {
-      color: #19e6b3;
+      color: $red;
     }
 }
 
@@ -105,7 +105,7 @@ ul {
   font-size: 16em;
   font-weight: 100;
   &:hover {
-    color: #cc0000;
+    color: $kelly-green;
   }
 }
 
@@ -156,18 +156,3 @@ ul {
     padding: 0;
   }
 }
-
-
-
-
-
-
-//
-// .purpley {
-//   display: block;
-//   width: 100%;
-//   height: 1px;
-//   background: $color-accent;
-//   transform: rotate(-45deg) translateY(50%);
-//
-// }

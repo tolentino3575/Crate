@@ -246,6 +246,22 @@ figcaption {
   text-align: center;
   opacity: 1;
   width: 100%; }
+  .album-title .record-name {
+    padding-right: 10px; }
+    .album-title .record-name:hover {
+      color: #B74ACC; }
+  .album-title .fa-plus {
+    color: #B74ACC;
+    padding-right: 10px; }
+    .album-title .fa-plus:hover {
+      color: #19e6b3; }
+  .album-title .fa-minus {
+    color: #B74ACC;
+    padding-left: 10px; }
+    .album-title .fa-minus:hover {
+      color: #cc0000; }
+  .album-title .slash {
+    color: #f1e4da; }
 
 ul {
   padding-left: 0;
@@ -408,7 +424,7 @@ ul {
   color: #fff;
   font-family: "Roboto", sans-serif; }
 
-.album-title a, .album-title p {
+.album-title .record-name, .album-title p {
   text-decoration: none;
   color: #f1e4da;
   font-family: "Roboto", sans-serif;
