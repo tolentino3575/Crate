@@ -1,10 +1,9 @@
 .sidebar {
   position: fixed;
-  background: #fff;
+  background: $crate-beige;
   left: 0;
   top: 0;
   min-height: 100%;
-  border: 1px solid green;
   width: 350px;
   min-width: 350px;
   padding: 0 20px;
@@ -24,7 +23,6 @@
     position: static;
     width: 100%;
     height: 100vh;
-    background: none;
     margin: 0;
   }
 }
@@ -60,7 +58,7 @@
 }
 
 input {
-  border: 1px solid $color-primary;
+  border: 1px solid $crate-beige;
   padding: 10px 25px;
   width: 70%;
   &[type="text"] {
@@ -87,7 +85,7 @@ input {
     color: $light-grey;
     margin: 30px 0;
     &:hover {
-      color: #B74ACC;
+      color: $color-accent;
     }
   }
   @media #{$small} {

@@ -4,11 +4,10 @@
 
 .sidebar {
   position: fixed;
-  background: #fff;
+  background: #f1e4da;
   left: 0;
   top: 0;
   min-height: 100%;
-  border: 1px solid green;
   width: 350px;
   min-width: 350px;
   padding: 0 20px;
@@ -28,7 +27,6 @@
       position: static;
       width: 100%;
       height: 100vh;
-      background: none;
       margin: 0; } }
 
 .login-toggle {
@@ -54,7 +52,7 @@
   margin-bottom: 2em; }
 
 input {
-  border: 1px solid #252525;
+  border: 1px solid #f1e4da;
   padding: 10px 25px;
   width: 70%; }
   input[type="text"] {
@@ -109,11 +107,13 @@ h1 .c-logo {
     margin: auto; }
 
 .gallery {
+  flex-direction: column;
   padding-left: 350px;
   background: #252525;
   min-height: 100vh;
   width: 100%;
-  overflow-x: hidden; }
+  overflow-x: hidden;
+  padding-right: 60px; }
   @media (max-width: 1085px) {
     .gallery {
       padding-left: 275px; } }
@@ -122,13 +122,12 @@ h1 .c-logo {
       padding-left: 0; } }
 
 .album-cover {
-  max-width: 100%;
-  height: auto; }
+  max-width: 100%; }
 
 .release {
   width: 278px;
   margin-right: 60px;
-  margin-bottom: 60px;
+  margin-bottom: 80px;
   height: 278px;
   position: relative;
   -webkit-box-shadow: 11px 10px 19px -4px rgba(0, 0, 0, 0.68);
@@ -151,7 +150,7 @@ h1 .c-logo {
   justify-content: space-around;
   align-content: space-around;
   width: 100%;
-  margin: 60px 0 0 60px; }
+  margin: 30px 0 0 60px; }
 
 .album-cover,
 .actual-record {
@@ -169,11 +168,12 @@ h1 .c-logo {
       width: 175px;
       height: 175px; } }
 
+.album-cover-2 {
+  width: 278px;
+  overflow: hidden;
+  z-index: 10; }
+
 .album-cover {
-  background: url("../img/1.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
   overflow: hidden;
   z-index: 10; }
 
@@ -241,20 +241,106 @@ h1 .c-logo {
   position: absolute;
   top: 103%;
   text-align: center;
-  opacity: 0.01;
-  width: 100%;
-  transition: opacity 400ms 0ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
-
-.release:hover > .album-title {
   opacity: 1;
-  transition: opacity 225ms 1ms cubic-bezier(0.445, 0.05, 0.55, 0.95); }
+  width: 100%; }
 
 .album-title p {
-  color: rgba(255, 255, 255, 0.5);
+  color: #f1e4da;
   font-family: sans-serif;
   text-transform: uppercase;
   letter-spacing: 3px;
-  font-size: 0.72em; }
+  font-size: 0.72em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300; }
+
+ul {
+  padding-left: 0;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  letter-spacing: .04em; }
+
+.release-info {
+  justify-content: center;
+  align-items: center; }
+
+.artist {
+  border-bottom: 1px solid #B74ACC;
+  padding-bottom: 10px;
+  font-family: "Roboto", sans-serif;
+  color: #fff;
+  display: block;
+  font-weight: 100;
+  text-transform: uppercase;
+  font-size: 2em;
+  letter-spacing: .04em; }
+
+.title {
+  font-family: "Roboto", sans-serif;
+  display: block;
+  font-size: 1.5em;
+  font-weight: 100;
+  line-height: 1.5em;
+  padding-top: 15px; }
+
+.row-container {
+  width: 1080px;
+  height: 1080px;
+  flex-wrap: wrap; }
+
+.track {
+  display: block;
+  font-size: 1.7em;
+  padding-bottom: 10px; }
+
+.square-2 {
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  align-self: flex-end;
+  width: 50%;
+  height: 50%;
+  background: #f1e4da;
+  opacity: 0.9;
+  color: #4d4d4d;
+  font-size: .9em;
+  line-height: 1.4em;
+  letter-spacing: 0.1em; }
+
+.square-1 {
+  background-image: url("../img/purpleline.png");
+  background-size: contain;
+  width: 50%;
+  height: 50%;
+  font-family: "Roboto", sans-serif;
+  weight: 100;
+  text-transform: uppercase; }
+  .square-1 span {
+    display: block; }
+
+.image {
+  font-family: "Varela Round", sans-serif;
+  width: 50%;
+  height: 50%;
+  justify-content: space-between; }
+  .image img {
+    justify-content: flex-start;
+    max-width: 100%;
+    max-height: 100%; }
+
+.info {
+  font-family: "Roboto", sans-serif;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  line-height: 2em;
+  color: #e0e0e0;
+  margin: 0 auto;
+  width: 50%;
+  height: 50%;
+  font-size: 1.2em; }
+  .info li {
+    list-style: none;
+    padding: 0; }
 
 .container {
   max-width: 100%; }
@@ -262,8 +348,33 @@ h1 .c-logo {
     .container {
       flex-direction: column; } }
 
-.social-footer, .gallery, .portfolioContainer, .container {
+.social-footer, .gallery, .gallery-header, .portfolioContainer, .release-info, .row-container, .square-2, .image, .info, .container {
   display: flex; }
+
+.gallery-header {
+  margin-left: 70px;
+  color: #fff;
+  margin-top: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 1.7em;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  font-family: 'Roboto';
+  font-weight: 300; }
+  .gallery-header p {
+    display: block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #B74ACC; }
+
+.release-info {
+  background-color: #252525;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  margin-left: 350px;
+  color: #fff;
+  font-family: "Roboto", sans-serif; }
 
 /* Web fonts --------*/
 html {
@@ -308,7 +419,7 @@ body {
 a:hover {
   color: #B74ACC; }
 
-button[type="submit"] {
+button {
   -webkit-appearance: button;
   cursor: pointer;
   background-color: #B74ACC;

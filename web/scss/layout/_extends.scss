@@ -1,3 +1,31 @@
 %flex {
   display: flex;
 }
+
+%gallery-header {
+  margin-left: 70px;
+  color: #fff;
+  margin-top: 20px;
+  font-weight: normal;
+  text-transform: uppercase;
+  font-size: 1.7em;
+  letter-spacing: 0.1em;
+  font-style: italic;
+  font-family: 'Roboto';
+  font-weight: 300;
+  p {
+    display: block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid $color-accent;
+  }
+}
+
+%main-container {
+  background-color: $color-primary;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  margin-left: 350px;
+  color: #fff;
+  font-family: $stack-roboto;
+}
