@@ -73,6 +73,7 @@ ul {
   @media #{$tablet} {
     align-items: flex-start;
     width: 100%;
+    height: auto;
   }
 }
 
@@ -153,6 +154,11 @@ ul {
       top: 15%;
       left: 20%;
     }
+    @media #{$small}{
+      font-size: 6em;
+      top: 25%;
+      left: 25%;
+    }
 }
 
 .minus {
@@ -175,6 +181,11 @@ ul {
     font-size: 16em;
     top: 45%;
     left: 65%;
+  }
+  @media #{$small}{
+    font-size: 12em;
+    top: 48%;
+    left: 60%;
   }
 }
 
@@ -204,6 +215,10 @@ ul {
   @media #{$tablet} {
     font-size: 1.4em;
     top: 50%;
+  }
+
+  @media #{$small} {
+    font-size: 1.1em;
   }
 }
 

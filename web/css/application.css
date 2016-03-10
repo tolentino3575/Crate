@@ -330,7 +330,8 @@ ul {
   @media (max-width: 850px) {
     .row-container {
       align-items: flex-start;
-      width: 100%; } }
+      width: 100%;
+      height: auto; } }
 
 .track {
   display: block;
@@ -399,6 +400,11 @@ ul {
       font-size: 8em;
       top: 15%;
       left: 20%; } }
+  @media (max-width: 640px) {
+    .plus {
+      font-size: 6em;
+      top: 25%;
+      left: 25%; } }
 
 .minus {
   color: #f1e4da;
@@ -420,6 +426,11 @@ ul {
       font-size: 16em;
       top: 45%;
       left: 65%; } }
+  @media (max-width: 640px) {
+    .minus {
+      font-size: 12em;
+      top: 48%;
+      left: 60%; } }
 
 .my-collection {
   display: block;
@@ -444,6 +455,9 @@ ul {
     .my-collection {
       font-size: 1.4em;
       top: 50%; } }
+  @media (max-width: 640px) {
+    .my-collection {
+      font-size: 1.1em; } }
 
 .image {
   font-family: "Varela Round", sans-serif;
