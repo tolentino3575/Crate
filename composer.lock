@@ -4,13 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-<<<<<<< HEAD
-    "hash": "d5c5f5229087292d5ead8b2a306a829b",
-    "content-hash": "16f001914499a97a41e70d8585606a52",
-=======
-    "hash": "6ba2bb16361ba44ff245bbcd96024b80",
-    "content-hash": "8f0074e4fcb97b09d2b1f1efb89c33df",
->>>>>>> master
+    "hash": "95805f67f2af4f08adfcc900dcf17082",
+    "content-hash": "cba51f34c453ff76e3e286e4d37093c9",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -67,7 +62,6 @@
             "time": "2015-06-14 21:17:01"
         },
         {
-<<<<<<< HEAD
             "name": "guzzlehttp/command",
             "version": "0.6.0",
             "source": {
@@ -319,52 +313,6 @@
             "time": "2014-08-17 21:15:53"
         },
         {
-            "name": "leafo/scssphp",
-            "version": "v0.0.14",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/leafo/scssphp.git",
-                "reference": "dfb793daf3ecdce82c40fb6e6c3a84b6ab230364"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/leafo/scssphp/zipball/dfb793daf3ecdce82c40fb6e6c3a84b6ab230364",
-                "reference": "dfb793daf3ecdce82c40fb6e6c3a84b6ab230364",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=5.2.0"
-            },
-            "require-dev": {
-                "php": ">=5.3.0",
-                "phpunit/phpunit": "3.7.*"
-            },
-            "bin": [
-                "pscss"
-            ],
-            "type": "library",
-            "autoload": {
-                "classmap": [
-                    "scss.inc.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT",
-                "GPL-3.0"
-            ],
-            "authors": [
-                {
-                    "name": "Leaf Corcoran",
-                    "email": "leafot@gmail.com",
-                    "homepage": "http://leafo.net"
-                }
-            ],
-            "description": "scssphp is a compiler for SCSS written in PHP.",
-            "homepage": "http://leafo.net/scssphp/",
-            "time": "2014-08-05 05:45:15"
-        },
-        {
             "name": "lusitanian/oauth",
             "version": "v0.8.9",
             "source": {
@@ -432,50 +380,6 @@
             "time": "2016-02-24 00:20:18"
         },
         {
-            "name": "panique/laravel-sass",
-            "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/panique/laravel-sass.git",
-                "reference": "9419bcde4a01ed05eb4e762444d9c56368d49f56"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/panique/laravel-sass/zipball/9419bcde4a01ed05eb4e762444d9c56368d49f56",
-                "reference": "9419bcde4a01ed05eb4e762444d9c56368d49f56",
-                "shasum": ""
-            },
-            "require": {
-                "leafo/scssphp": "v0.0.14",
-                "php": ">=5.3.0"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "sass-compiler.php"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Panique",
-                    "homepage": "http://careers.stackoverflow.com/panique",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Compiles your Sass .scss files to .css every time you run your app (in development)",
-            "homepage": "https://github.com/panique/laravel-sass",
-            "keywords": [
-                "css",
-                "sass",
-                "scss"
-            ],
-            "time": "2015-05-23 21:13:23"
-        },
-        {
             "name": "paragonie/random_compat",
             "version": "v1.2.1",
             "source": {
@@ -524,8 +428,6 @@
             "time": "2016-02-29 17:25:04"
         },
         {
-=======
->>>>>>> master
             "name": "phpdocumentor/reflection-docblock",
             "version": "2.0.4",
             "source": {
@@ -1087,7 +989,6 @@
             "time": "2012-12-21 11:40:51"
         },
         {
-<<<<<<< HEAD
             "name": "ricbra/php-discogs-api",
             "version": "1.1.0",
             "source": {
@@ -1142,8 +1043,6 @@
             "time": "2014-10-17 21:26:49"
         },
         {
-=======
->>>>>>> master
             "name": "sebastian/comparator",
             "version": "1.2.0",
             "source": {
@@ -1843,9 +1742,8 @@
             "time": "2016-02-28 21:33:13"
         },
         {
-<<<<<<< HEAD
             "name": "symfony/polyfill-php56",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php56.git",
@@ -1901,16 +1799,16 @@
         },
         {
             "name": "symfony/polyfill-php70",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php70.git",
-                "reference": "8428ceddbbaf102f2906769a8ef2438220c5cb95"
+                "reference": "386c1be9cad3ab531425211919e78c37971be4ce"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/8428ceddbbaf102f2906769a8ef2438220c5cb95",
-                "reference": "8428ceddbbaf102f2906769a8ef2438220c5cb95",
+                "url": "https://api.github.com/repos/symfony/polyfill-php70/zipball/386c1be9cad3ab531425211919e78c37971be4ce",
+                "reference": "386c1be9cad3ab531425211919e78c37971be4ce",
                 "shasum": ""
             },
             "require": {
@@ -1956,11 +1854,11 @@
                 "portable",
                 "shim"
             ],
-            "time": "2016-01-25 08:44:42"
+            "time": "2016-01-28 22:42:02"
         },
         {
             "name": "symfony/polyfill-util",
-            "version": "v1.1.0",
+            "version": "v1.1.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-util.git",
@@ -2071,8 +1969,6 @@
             "time": "2016-02-13 09:23:44"
         },
         {
-=======
->>>>>>> master
             "name": "symfony/routing",
             "version": "v3.0.3",
             "source": {
@@ -2148,7 +2044,6 @@
             "time": "2016-02-04 13:53:13"
         },
         {
-<<<<<<< HEAD
             "name": "symfony/security",
             "version": "v3.0.3",
             "source": {
@@ -2227,8 +2122,6 @@
             "time": "2016-02-26 06:06:39"
         },
         {
-=======
->>>>>>> master
             "name": "symfony/yaml",
             "version": "v2.8.3",
             "source": {
@@ -2342,13 +2235,7 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-<<<<<<< HEAD
-    "stability-flags": {
-        "panique/laravel-sass": 20
-    },
-=======
     "stability-flags": [],
->>>>>>> master
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
