@@ -1,40 +1,18 @@
 <?php
-<<<<<<< HEAD
-
-=======
->>>>>>> master
     class User
     {
         private $user_name;
         private $password;
         private $id;
 
-<<<<<<< HEAD
+
         function __construct($user_name, $password, $id = null){
-=======
-        function __construct($user_name, $password, $id=null)
-        {
->>>>>>> master
+
             $this->user_name = $user_name;
             $this->password = $password;
             $this->id = $id;
         }
 
-<<<<<<< HEAD
-        function getUserName(){
-            return $this->user_name;
-        }
-
-        function getPassword(){
-            return $this->password;
-        }
-
-        function getId(){
-            return $this->id;
-        }
-
-        function save(){
-=======
         function setUserName($new_user_name)
         {
             $this->user_name = (string) $new_user_name;
@@ -62,22 +40,11 @@
 
         function save()
         {
->>>>>>> master
+
             $GLOBALS['DB']->exec("INSERT INTO users (user_name, password) VALUES ('{$this->getUserName()}', '{$this->getPassword()}');");
             $this->id = $GLOBALS['DB']->lastInsertId();
         }
 
-<<<<<<< HEAD
-        static function getAll(){
-            $returned_users = $GLOBALS['DB']->query("SELECT * FROM users;");
-
-            $users = array();
-            foreach($returned_users as $user){
-                $username = $user['user_name'];
-                $password = $user['password'];
-                $id = $user['id'];
-                $new_user = new User($username, $password, $id);
-=======
         static function getAll()
         {
             $returned_users = $GLOBALS['DB']->query("SELECT * FROM users");
@@ -87,7 +54,6 @@
                 $password = $user['password'];
                 $id = $user['id'];
                 $new_user = new User($user_name, $password, $id);
->>>>>>> master
                 array_push($users, $new_user);
             }
             return $users;
@@ -97,9 +63,8 @@
         {
             $GLOBALS['DB']->exec("DELETE FROM users");
         }
-<<<<<<< HEAD
-    }
-=======
+
+
 
         function addRecord($record)
         {
@@ -120,10 +85,11 @@
                 $artist = $record['artists'];
                 $genre = $record['genre'];
                 $track = $record['tracks'];
-                $release_date = $record['release_date'];
+                $year = $record['year'];
                 $image = $record['image'];
+                $label = $record['label'];
                 $id = $record['id'];
-                $new_record = new Record($title, $artist, $genre, $track, $release_date, $image, $id);
+                $new_record = new Record($title, $artist, $genre, $track, $year, $image, $label, $id);
                 array_push($result_records, $new_record);
             }
             return $result_records;
@@ -145,7 +111,34 @@
             return $found_user;
         }
 
+        // static function login($user_name, $password)
+        // {
+        //     $query = $GLOBALS['DB']->query("SELECT * FROM users WHERE user_name = '{$user_name}' AND password = '{$password}'");
+        //     $login_match = $query->fetchAll(PDO::FETCH_ASSOC);
+        //     $found_match = null;
+        //
+        //     foreach($login_match as $match)
+        //     {
+        //         $user_name = $match['user_name'];
+        //         $passowrd = $match['password'];
+        //         $id = $match['id'];
+        //         $found_match = User::find($id);
+        //     }
+        //     return $found_match;
+        // }
+
+        static function login($user_name, $password)
+        {
+                $all_users = User::getAll();
+                $found_user = null;
+                foreach ($all_users as $user) {
+                    if ($user->getUserName() == $user_name && $user->getPassword() == $password) {
+                        $found_user = $user;
+                    }
+                }
+                return $found_user;
+        }
+
     }
 
->>>>>>> master
 ?>
