@@ -4,7 +4,7 @@
 
 .sidebar {
   position: fixed;
-  background: #f1e4da;
+  background-image: url("../img/natural_paper.jpg");
   left: 0;
   top: 0;
   min-height: 100%;
