@@ -6,18 +6,20 @@ class Record
   private $artist;
   private $genre;
   private $track;
-  private $release_date;
+  private $year;
   private $image;
+  private $label;
   private $id;
 
-  function __construct($title, $artist, $genre, $track, $release_date, $image = null, $id = null)
+  function __construct($title, $artist, $genre, $track, $year, $image = null, $label = null, $id = null)
   {
     $this->title = $title;
     $this->artist = $artist;
     $this->genre = $genre;
     $this->track = $track;
-    $this->release_date = $release_date;
+    $this->year = $year;
     $this->image = $image;
+    $this->label = $label;
     $this->id = $id;
   }
   function setTitle($new_title)
@@ -52,17 +54,21 @@ class Record
   {
     $this->track = (string)$new_track;
   }
-  function setReleaseDate($new_release_date)
+  function setYear($new_year)
   {
-    $this->release_date = $release_date;
+    $this->year = $year;
   }
-  function getReleaseDate()
+  function getYear()
   {
-    return $this->release_date;
+    return $this->year;
   }
   function getImage()
   {
     return $this->image;
+  }
+  function getLabel()
+  {
+    return $this->label;
   }
   function getId()
   {
@@ -71,25 +77,26 @@ class Record
   function save()
   {
     $GLOBALS['DB']->exec(
-    "INSERT INTO records (title, artists, genre, tracks, release_date, image)
-    VALUES ('{$this->getTitle()}','{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getReleaseDate()}', '{$this->getImage()}')");
+    "INSERT INTO records (title, artists, genre, tracks, year, image, label)
+    VALUES ('{$this->getTitle()}','{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getYear()}', '{$this->getImage()}', '{$this->getLabel()}')");
     $this->id = $GLOBALS['DB']->lastInsertId();
   }
   static function getAll()
   {
     $returned_records = $GLOBALS['DB']->query(
     "SELECT * FROM records
-    ORDER BY release_date");
+    ORDER BY year");
     $records = array();
     foreach($returned_records as $record){
       $title = $record['title'];
       $artist = $record['artists'];
       $genre = $record['genre'];
       $track = $record['tracks'];
-      $release_date = $record['release_date'];
+      $year = $record['year'];
       $image = $record['image'];
+      $label = $record['label'];
       $id = $record['id'];
-      $new_record = new Record($title, $artist, $genre, $track, $release_date, $image, $id);
+      $new_record = new Record($title, $artist, $genre, $track, $year, $image, $label, $id);
       array_push($records, $new_record);
     }
     return $records;

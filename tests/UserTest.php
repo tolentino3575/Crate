@@ -1,90 +1,5 @@
 <?php
 
-<<<<<<< HEAD
-    /**
-    * @backupGlobals disabled
-    * @backupStaticAttributes disabled
-    */
-    require_once 'src/User.php';
-
-    $server = 'mysql:host=localhost;dbname=discogs_test';
-    $user = 'root';
-    $password = 'root';
-    $DB = new PDO($server, $user, $password);
-
-    class UserTest extends PHPUnit_Framework_TestCase
-    {
-        protected function tearDown()
-        {
-            User::deleteAll();
-        }
-
-        function test_getUserName()
-        {
-            // Arrange
-            $username = 'user';
-            $password = 'user';
-            $new_user = new User($username, $password);
-
-            // Act
-            $result = $new_user->getUserName();
-
-            // Assert
-            $this->assertEquals('user', $result);
-        }
-
-        function test_save()
-        {
-            // Arrange
-            $username = 'user';
-            $password = 'user';
-            $new_user = new User($username, $password);
-
-
-            // Act
-            $new_user->save();
-
-            // Arrange
-            $result = User::getAll();
-            $this->assertEquals($new_user, $result[0]);
-        }
-
-        function test_getAll()
-        {
-            // Arrange
-            $username1 = 'user';
-            $password1 = 'user';
-            $new_user1 = new User($username1, $password1);
-            $new_user1->save();
-
-            $username2 = 'user2';
-            $password2 = 'user2';
-            $new_user2 = new User($username2, $password2);
-            $new_user2->save();
-
-            // Act
-            $result = User::getAll();
-            $this->assertEquals([$new_user1, $new_user2], $result);
-        }
-
-        function test_deleteAll()
-        {
-            // Arrange
-            $username = 'user';
-            $password = 'user';
-            $new_user = new User($username, $password);
-            $new_user->save();
-
-            // Act
-            User::deleteAll();
-            $result = User::getAll();
-
-            // Assert
-            $this->assertEquals([], $result);
-        }
-
-    }
-=======
 /**
 * @backupGlobals disabled
 * @backupStaticAttributes disabled
@@ -200,9 +115,11 @@ class UserTest extends PHPUnit_Framework_TestCase
         $artist = "Erik T";
         $genre = "Jazz";
         $track = "Good";
-        $release_date = "2000-01-01";
+        $year = "2000";
+        $image = null;
+        $label = "DeathRow";
         $id = 1;
-        $test_record = new Record($title, $artist, $genre, $track, $release_date, $id);
+        $test_record = new Record($title, $artist, $genre, $track, $year, $image, $label, $id);
         $test_record->save();
 
         //Act
@@ -225,20 +142,22 @@ class UserTest extends PHPUnit_Framework_TestCase
         $artist = "Erik T";
         $genre = "Jazz";
         $track = "Good";
-        $release_date = "2000-01-01";
+        $year = "2000";
         $image = null;
+        $label = "DeathRow";
         $id = 1;
-        $test_record = new Record($title, $artist, $genre, $track, $release_date, $image,$id);
+        $test_record = new Record($title, $artist, $genre, $track, $year, $image, $label, $id);
         $test_record->save();
 
         $title2 = "Yeah";
         $artist2 = "Berik B";
         $genre2 = "Rock";
         $track2 = "Great";
-        $release_date2 = "2000-02-02";
+        $year2 = "2000";
         $image = null;
+        $label = "DeathRow";
         $id2 = 1;
-        $test_record2 = new Record($title2, $artist2, $genre2, $track2, $release_date2, $image, $id2);
+        $test_record2 = new Record($title2, $artist2, $genre2, $track2, $year2, $image, $label, $id2);
         $test_record2->save();
 
         //Act
@@ -267,5 +186,4 @@ class UserTest extends PHPUnit_Framework_TestCase
     }
 }
 
->>>>>>> master
 ?>
