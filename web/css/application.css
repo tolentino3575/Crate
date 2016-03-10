@@ -307,7 +307,9 @@ ul {
   letter-spacing: 0.1em; }
 
 .square-1 {
-  background-image: url("../img/purpleline.png");
+  position: relative;
+  background-image: url("../img/slash.svg");
+  background-repeat: no-repeat;
   background-size: contain;
   width: 50%;
   height: 50%;
@@ -316,6 +318,38 @@ ul {
   text-transform: uppercase; }
   .square-1 span {
     display: block; }
+
+.plus {
+  position: absolute;
+  display: block;
+  top: 10%;
+  left: 20%;
+  font-size: 8em;
+  font-weight: 100; }
+  .plus:hover {
+    color: #19e6b3; }
+
+.minus {
+  position: absolute;
+  display: block;
+  top: 51%;
+  left: 65%;
+  font-size: 16em;
+  font-weight: 100; }
+  .minus:hover {
+    color: #cc0000; }
+
+.my-collection {
+  display: block;
+  color: #808080;
+  letter-spacing: .2em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%); }
 
 .image {
   font-family: "Varela Round", sans-serif;

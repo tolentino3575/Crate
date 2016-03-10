@@ -2,7 +2,7 @@ ul {
   padding-left: 0;
   font-family: $stack-roboto;
   font-weight: 100;
-    letter-spacing: .04em;
+  letter-spacing: .04em;
 }
 
 .release-info {
@@ -68,8 +68,10 @@ ul {
 }
 
 .square-1 {
+  position: relative;
   // border: 1px solid red;
-  background-image: url('../img/purpleline.png');
+  background-image: url('../img/slash.svg');
+  background-repeat: no-repeat;
   background-size: contain;
   width: 50%;
   height: 50%;
@@ -81,7 +83,42 @@ ul {
   }
 }
 
+.plus {
+  position: absolute;
+  display: block;
+  top: 10%;
+  left: 20%;
+  font-size: 8em;
+  font-weight: 100;
+    &:hover {
+      color: #19e6b3;
+    }
+}
 
+.minus {
+  position: absolute;
+  display: block;
+  top: 51%;
+  left: 65%;
+  font-size: 16em;
+  font-weight: 100;
+  &:hover {
+    color: #cc0000;
+  }
+}
+
+.my-collection {
+  display: block;
+  color: #808080;
+  letter-spacing: .2em;
+  font-family: $stack-roboto;
+  font-weight: 300;
+  font-size: 1.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
 
 .image {
   font-family: $stack-varela;
