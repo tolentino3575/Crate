@@ -8,7 +8,7 @@
 require_once "src/User.php";
 require_once "src/Record.php";
 
-$server = 'mysql:host=localhost;dbname=discogs_test';
+$server = 'mysql:host=localhost:8889;dbname=discogs_test';
 $username = 'root';
 $password = 'root';
 $DB = new PDO($server, $username, $password);
@@ -180,6 +180,22 @@ class UserTest extends PHPUnit_Framework_TestCase
 
         //Act
         $result = User::find($test_user->getId());
+
+        //Assert
+        $this->assertEquals($test_user, $result);
+    }
+
+    function test_login()
+    {
+        //Arrange
+        $name = "Jeff";
+        $password = "root";
+        $id = 1;
+        $test_user = new User($name, $password, $id);
+        $test_user->save();
+
+        //Act
+        $result = User::login($test_user->getUserName(), $test_user->getPassword());
 
         //Assert
         $this->assertEquals($test_user, $result);

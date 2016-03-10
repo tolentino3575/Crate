@@ -6,7 +6,7 @@
   require_once "src/Record.php";
   require_once "src/User.php";
 
-	$server = "mysql:host=localhost;dbname=discogs_test";
+	$server = "mysql:host=localhost:8889;dbname=discogs_test";
 	$username = "root";
 	$password = "root";
 	$DB = new PDO($server, $username, $password);
@@ -249,11 +249,11 @@
       $artist2 = "Tame Impala";
       $genre2 = "Blues";
       $track2 = "Let It Happen";
-      $release_date2 = "2015";
+      $year2 = "2015";
       $image2 = null;
       $label2 = "DeathRow";
       $id2 = null;
-      $test_record2 = new Record($title2, $artist2, $genre2, $track2, $release_date2, $image2, $label2, $id2);
+      $test_record2 = new Record($title2, $artist2, $genre2, $track2, $year2, $image2, $label2, $id2);
       $test_record2->save();
 
       //Act

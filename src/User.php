@@ -111,6 +111,34 @@
             return $found_user;
         }
 
+        // static function login($user_name, $password)
+        // {
+        //     $query = $GLOBALS['DB']->query("SELECT * FROM users WHERE user_name = '{$user_name}' AND password = '{$password}'");
+        //     $login_match = $query->fetchAll(PDO::FETCH_ASSOC);
+        //     $found_match = null;
+        //
+        //     foreach($login_match as $match)
+        //     {
+        //         $user_name = $match['user_name'];
+        //         $passowrd = $match['password'];
+        //         $id = $match['id'];
+        //         $found_match = User::find($id);
+        //     }
+        //     return $found_match;
+        // }
+
+        static function login($user_name, $password)
+        {
+                $all_users = User::getAll();
+                $found_user = null;
+                foreach ($all_users as $user) {
+                    if ($user->getUserName() == $user_name && $user->getPassword() == $password) {
+                        $found_user = $user;
+                    }
+                }
+                return $found_user;
+        }
+
     }
 
 ?>
