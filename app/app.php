@@ -133,7 +133,7 @@
         $pages_array = $results_array['pagination'];
         // print_r($results_array);
         return $app['twig']->render("search.html.twig", array(
-            'users' => User::getAll(),
+            'user' => $_SESSION['user'],
             'results' => $results_array['results'],
             'pages' => $pages_array
         ));
@@ -218,7 +218,7 @@
         // print_r($results_array['videos'][0]['uri']);
         print_r($results_array['labels'][0]);
         return $app['twig']->render("release.html.twig", array(
-            'users' => User::getAll(),
+            'user' => $_SESSION['user'],
             'results' => $results_array,
             'label' => $results_array['labels'][0],
             'year' => $results_array['year'],
@@ -238,7 +238,10 @@
             $_SESSION['user'] = $user;
             // print_r(User::getAll());
             if (isset($_SESSION['user'])){
-                return $app['twig']->render("index.html.twig", array('user' => $_SESSION['user']));
+                return $app['twig']->render("collection.html.twig", array(
+                    'user' => $_SESSION['user'],
+                    'collection' => $user->getRecords()
+                ));
             } else {
                 $error = "Incorrect login info.";
                 return $app['twig']->render("index.html.twig", array('error' => $error));
@@ -297,15 +300,43 @@
             $images = $images[0];
             $id = null;
 
-            $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
-            var_dump($new_record);
-            $new_record->save();
-            // $record = Record::find($_POST['record_id']);
-            // $user = User::find($_SESSION['user']);
-            // print_r($_SESSION['user']);
+            $records = $_SESSION['user']->getRecords();
+            $found_record = null;
+
+            foreach($records as $record){
+                $record_name = $record->getTitle();
+                $record_artist = $record->getArtist();
+                if($record_name == $title && $record_artist == $artist ){
+                    $error = "Already in your collection";
+                    return $app['twig']->render("release.html.twig", array('error' => $error));
+                } else {
+                    $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
+                    $new_record->save();
+                }
+
+            }
+
+
+        // if record id is in the db
+            // then can't add again
+            // return record already in collection
+        // else
+            // add it to collection
+
+
 
             $_SESSION['user']->addRecord($new_record);
-            return $app['twig']->render("index.html.twig");
+            return $app['twig']->render("release.html.twig", array(
+                'user' => $_SESSION['user'],
+                'results' => $results_array,
+                'label' => $results_array['labels'][0],
+                'year' => $results_array['year'],
+                'genres' => $results_array['genres'],
+                'tracklist' => $results_array['tracklist'],
+                'artist' => $results_array['artists'][0],
+                'images' => $results_array['images'],
+                'succes' => $success
+            ));
         });
 
         //DELETE RECORD FROM COLLECTION
@@ -317,8 +348,8 @@
 
         //COLLECTION ROUTE
         $app->get("/view_collection/{id}", function($id) use ($app){
-            $user = User::find($id);
-            return $app['twig']->render("collection.html.twig", array('records' => $user->getRecords()));
+            $user = $_SESSION['user'];
+            return $app['twig']->render("collection.html.twig", array('collection' => $user->getRecords()));
         });
 
 

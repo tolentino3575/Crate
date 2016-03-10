@@ -24,7 +24,7 @@ class Record
   }
   function setTitle($new_title)
   {
-    $this->title = (string) $title;
+    $this->title = (string) $new_title;
   }
   function getTitle()
   {
@@ -32,7 +32,7 @@ class Record
   }
   function setArtist($new_artist)
   {
-    $this->artist = (string) $artist;
+    $this->artist = (string) $new_artist;
   }
   function getArtist()
   {
@@ -62,9 +62,17 @@ class Record
   {
     return $this->year;
   }
+  function setImage($new_image)
+  {
+      $this->image = $new_image;
+  }
   function getImage()
   {
     return $this->image;
+  }
+  function setLabel($new_label)
+  {
+      $this->label = $new_label;
   }
   function getLabel()
   {
@@ -74,8 +82,20 @@ class Record
   {
     return $this->id;
   }
+  function adjustPunctuation($name)
+  {
+      $search = "/(\')/";
+      $replace = "\'";
+      $clean_name = preg_replace($search, $replace, $name);
+      return $clean_name;
+  }
   function save()
   {
+    $this->setTitle($this->adjustPunctuation($this->getTitle()));
+    $this->setArtist($this->adjustPunctuation($this->getArtist()));
+    $this->setGenre($this->adjustPunctuation($this->getGenre()));
+    $this->setTrack($this->adjustPunctuation($this->getTrack()));
+    $this->setLabel($this->adjustPunctuation($this->getLabel()));
     $GLOBALS['DB']->exec(
     "INSERT INTO records (title, artists, genre, tracks, year, image, label)
     VALUES ('{$this->getTitle()}','{$this->getArtist()}', '{$this->getGenre()}', '{$this->getTrack()}', '{$this->getYear()}', '{$this->getImage()}', '{$this->getLabel()}')");
