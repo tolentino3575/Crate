@@ -8,8 +8,28 @@ ul {
 .release-info {
   @extend %main-container;
   @extend %flex;
+  overflow: hidden;
+  height: 100vh;
+  width: 100%;
   justify-content: center;
   align-items: center;
+  margin-left: 350px;
+
+  @media #{$medium} {
+    margin-left: 275px;
+  }
+
+  @media #{$tablet} {
+    overflow-y:auto;
+    align-items: flex-start;
+  }
+  @media #{$small} {
+    margin-left: 0;
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+    overflow-y: hidden;
+  }
 }
 
 .artist {
@@ -42,6 +62,16 @@ ul {
   @media #{$big-medium} {
     width: 900px;
     height: 900px;
+    justify-content: center;
+  }
+
+  @media #{$medium} {
+    width: 100vw;
+    height: 100vh;
+  }
+
+  @media #{$tablet} {
+    align-items: flex-start;
   }
 }
 
@@ -60,7 +90,6 @@ ul {
   align-self: flex-end;
   width: 50%;
   height: 50%;
-  // border: 5px solid peru;
   background: $crate-beige;
   opacity: 0.9;
   color: $light-grey;
@@ -70,6 +99,10 @@ ul {
 
   @media #{$big-medium} {
     line-height: 1.1em;
+  }
+  @media #{$tablet} {
+    width: 590px;
+    height: 590px;
   }
 }
 
@@ -87,6 +120,15 @@ ul {
   span {
     display: block;
   }
+  @media #{$medium}{
+    background-position: center;
+  }
+  @media #{$tablet} {
+    width: 590px;
+    height: 590px;
+    order: 1;
+  }
+
 }
 
 .plus {
@@ -100,6 +142,11 @@ ul {
     &:hover {
       color: $red;
     }
+    @media #{$medium}{
+      font-size: 6em;
+      top: 15%;
+      left: 25%;
+    }
 }
 
 .minus {
@@ -112,6 +159,11 @@ ul {
   font-weight: 100;
   &:hover {
     color: $kelly-green;
+  }
+  @media #{$medium}{
+    font-size: 12em;
+    top: 45%;
+    left: 60%;
   }
 }
 
@@ -133,6 +185,15 @@ ul {
   @media #{$big-medium} {
     font-size: 1.1em;
   }
+
+  @media #{$medium}{
+    font-size: 1.2em;
+  }
+
+  @media #{$tablet} {
+    font-size: 1.6em;
+    top: 50%;
+  }
 }
 
 .image {
@@ -145,6 +206,16 @@ ul {
     justify-content: flex-start;
     max-width: 100%;
     max-height: 100%;
+  }
+  @media #{$medium}{
+    justify-content: flex-end;
+  }
+  @media #{$tablet}{
+    justify-content: center;
+    // width: 100%;
+    // height: 100%;
+      width: 590px;
+      height: 590px;
   }
 }
 
@@ -164,5 +235,9 @@ ul {
   li {
     list-style: none;
     padding: 0;
+  }
+  @media #{$tablet} {
+    width: 590px;
+    height: 590px;
   }
 }
