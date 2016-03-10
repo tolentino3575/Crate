@@ -396,7 +396,7 @@ ul {
     .container {
       flex-direction: column; } }
 
-.social-footer, .gallery, .gallery-header, .portfolioContainer, .release-info, .row-container, .square-2, .image, .info, .container {
+.social-footer, .gallery, .gallery-header, .portfolioContainer, .release-info, .row-container, .square-2, .image, .info, .container, .back-forward {
   display: flex; }
 
 .gallery-header {
@@ -498,5 +498,23 @@ button {
   padding: 10px 30px;
   text-transform: uppercase;
   color: #fff; }
+
+.back-forward {
+  margin: 20px auto;
+  width: 95%;
+  justify-content: space-between; }
+
+.back, .forward {
+  color: #f1e4da;
+  font-weight: 100;
+  font-size: 4em;
+  font-family: "Roboto", sans-serif; }
+  .back a, .forward a {
+    color: #B74ACC; }
+    .back a:hover, .forward a:hover {
+      color: #f1e4da; }
+
+.back {
+  padding-left: 60px; }
 
 /*# sourceMappingURL=application.css.map */
