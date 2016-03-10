@@ -1,0 +1,23 @@
+.back-forward {
+  margin: 20px auto;
+  width: 95%;
+  @extend %flex;
+  justify-content: space-between;
+}
+
+.back, .forward {
+  color: $crate-beige;
+  font-weight: 100;
+  font-size: 4em;
+  font-family: $stack-roboto;
+  a {
+    color: $color-accent;
+    &:hover {
+      color: $crate-beige;
+    }
+  }
+}
+
+.back {
+  padding-left: 60px;
+}
