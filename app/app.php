@@ -18,9 +18,11 @@
     // if( isset($_SESSION['search_term'])){
     //   echo "set";
     // }
-
+    use Symfony\Component\Debug\Debug;
+    Debug::enable();
     $app = new Silex\Application();
 
+        $app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
         'twig.path' => __DIR__ . '/../views',
@@ -195,7 +197,7 @@
 
         $results_array = json_decode($output, true);
 
-
+        $error = null;
 
         // // print_r($results_array['videos'][0]['uri']);
         // // releases curl
@@ -218,6 +220,7 @@
         print_r($results_array['labels'][0]);
         return $app['twig']->render("release.html.twig", array(
             'user' => $_SESSION['user'],
+            'error' => $error,
             'results' => $results_array,
             'label' => $results_array['labels'][0],
             'year' => $results_array['year'],
@@ -326,13 +329,28 @@
             $label = $labels[0];
             $images = $images[0];
             $id = null;
-
+            $error = null;
 
 
 
             if(isset($_SESSION['user'])){
                 $records = $_SESSION['user']->getRecords();
-                $found_record = null;
+                if(!$records){
+                    $error = null;
+                    $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
+                    $new_record->save();
+                    $_SESSION['user']->addRecord($new_record);
+                    return $app['twig']->render("release.html.twig", array(
+                        'error' => $error,
+                        'user' => $_SESSION['user'],
+                        'results' => $results_array,
+                        'label' => $results_array['labels'][0],
+                        'year' => $results_array['year'],
+                        'genres' => $results_array['genres'],
+                        'tracklist' => $results_array['tracklist'],
+                        'artist' => $results_array['artists'][0],
+                        'images' => $results_array['images']));
+                }
                 foreach($records as $record){
                     $record_name = $record->getTitle();
                     $record_artist = $record->getArtist();
@@ -349,6 +367,21 @@
                             'artist' => $results_array['artists'][0],
                             'images' => $results_array['images']
                         ));
+                    } else {
+                        $error = null;
+                        $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
+                        $new_record->save();
+                        $_SESSION['user']->addRecord($new_record);
+                        return $app['twig']->render("release.html.twig", array(
+                            'error' => $error,
+                            'user' => $_SESSION['user'],
+                            'results' => $results_array,
+                            'label' => $results_array['labels'][0],
+                            'year' => $results_array['year'],
+                            'genres' => $results_array['genres'],
+                            'tracklist' => $results_array['tracklist'],
+                            'artist' => $results_array['artists'][0],
+                            'images' => $results_array['images']));
                     }
                 }
             } elseif(!isset($_SESSION['user'])) {
@@ -363,12 +396,9 @@
                             'tracklist' => $results_array['tracklist'],
                             'artist' => $results_array['artists'][0],
                             'images' => $results_array['images']));
-            } else {
-                        $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
-                        $new_record->save();
-                        $_SESSION['user']->addRecord($new_record);
-                    }
+            }
             return $app['twig']->render("release.html.twig", array(
+                'error' => $error,
                 'user' => $_SESSION['user'],
                 'results' => $results_array,
                 'label' => $results_array['labels'][0],
@@ -376,16 +406,99 @@
                 'genres' => $results_array['genres'],
                 'tracklist' => $results_array['tracklist'],
                 'artist' => $results_array['artists'][0],
-                'images' => $results_array['images'],
-                'succes' => $success
+                'images' => $results_array['images']
             ));
         });
 
         //DELETE RECORD FROM COLLECTION
-        $app->delete("/delete_record/{id}", function($id) use ($app){
-            $record = Record::find($id);
-            $record->delete();
-            return $app['twig']->render("release.html.twig");
+        $app->post("/delete_record", function() use ($app){
+            $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
+            $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
+            $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
+            $url = "https://api.discogs.com/";
+            $results_url = $url . '/releases/' . $_SESSION['release_id'] . '?key=' . $consumerKey . '&secret=' . $consumerSecret;
+            // $_SESSION['']
+            // results curl
+            $ch = curl_init();
+            //Set the User-Agent Identifier
+            curl_setopt($ch, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
+            //Set the URL of the page or file to download.
+            curl_setopt($ch, CURLOPT_URL, $results_url);
+            //Ask cURL to return the contents in a variable instead of simply echoing them
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            //Execute the curl session
+            $output = curl_exec($ch);
+            //close the session
+            curl_close ($ch);
+            $records = $_SESSION['user']->getRecords();
+            // var_dump($records);
+            $results_array = json_decode($output, true);
+            $tracks = array();
+            $labels = array();
+            $images = array();
+
+            foreach($results_array['tracklist'] as $track){
+                array_push($tracks, $track['title']);
+            }
+            foreach($results_array['labels'] as $label){
+                array_push($labels, $label['name']);
+            }
+            foreach($results_array['images'] as $image){
+                array_push($images, $image['resource_url']);
+            }
+
+            $title = $results_array['tracklist'][0]['title'];
+            $artist = $results_array['artists'][0]['name'];
+            $genre = $results_array['genres'][0];
+            $track = implode($tracks);
+            $year = $results_array['year'];
+            $label = $labels[0];
+            $images = $images[0];
+            $id = null;
+
+            foreach($records as $record){
+                $record_name = $record->getTitle();
+                $record_artist = $record->getArtist();
+                if($record_name == $title && $record_artist == $artist ){
+                    $record->delete();
+                    $error = "Record deleted";
+                    return $app['twig']->render("release.html.twig", array(
+                        'error' => $error,
+                        'user' => $_SESSION['user'],
+                        'results' => $results_array,
+                        'label' => $results_array['labels'][0],
+                        'year' => $results_array['year'],
+                        'genres' => $results_array['genres'],
+                        'tracklist' => $results_array['tracklist'],
+                        'artist' => $results_array['artists'][0],
+                        'images' => $results_array['images']
+                    ));
+                }// } else {
+                //     $error = "Record is not in your collection";
+                //     return $app['twig']->render("release.html.twig", array(
+                //         'error' => $error,
+                //         'user' => $_SESSION['user'],
+                //         'results' => $results_array,
+                //         'label' => $results_array['labels'][0],
+                //         'year' => $results_array['year'],
+                //         'genres' => $results_array['genres'],
+                //         'tracklist' => $results_array['tracklist'],
+                //         'artist' => $results_array['artists'][0],
+                //         'images' => $results_array['images']
+                //     ));
+                // }
+            }
+            // return $app['twig']->render("release.html.twig", array(
+            //             'error' => $error,
+            //             'user' => $_SESSION['user'],
+            //             'results' => $results_array,
+            //             'label' => $results_array['labels'][0],
+            //             'year' => $results_array['year'],
+            //             'genres' => $results_array['genres'],
+            //             'tracklist' => $results_array['tracklist'],
+            //             'artist' => $results_array['artists'][0],
+            //             'images' => $results_array['images']
+            //         ));
         });
 
         //COLLECTION ROUTE
