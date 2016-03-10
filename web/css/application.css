@@ -237,21 +237,31 @@ h1 .c-logo {
 .release:hover > .actual-record {
   transform: translate3d(55px, 0px, 0px) rotateZ(40deg); }
 
+figcaption {
+  padding-top: 0.5em; }
+
 .album-title {
   position: absolute;
   top: 103%;
   text-align: center;
   opacity: 1;
   width: 100%; }
-
-.album-title p {
-  color: #f1e4da;
-  font-family: sans-serif;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  font-size: 0.72em;
-  font-family: "Roboto", sans-serif;
-  font-weight: 300; }
+  .album-title .record-name {
+    padding-right: 10px; }
+    .album-title .record-name:hover {
+      color: #B74ACC; }
+  .album-title .fa-plus {
+    color: #B74ACC;
+    padding-right: 10px; }
+    .album-title .fa-plus:hover {
+      color: #19e6b3; }
+  .album-title .fa-minus {
+    color: #B74ACC;
+    padding-left: 10px; }
+    .album-title .fa-minus:hover {
+      color: #cc0000; }
+  .album-title .slash {
+    color: #f1e4da; }
 
 ul {
   padding-left: 0;
@@ -307,7 +317,9 @@ ul {
   letter-spacing: 0.1em; }
 
 .square-1 {
-  background-image: url("../img/purpleline.png");
+  position: relative;
+  background-image: url("../img/slash.svg");
+  background-repeat: no-repeat;
   background-size: contain;
   width: 50%;
   height: 50%;
@@ -316,6 +328,42 @@ ul {
   text-transform: uppercase; }
   .square-1 span {
     display: block; }
+
+.plus {
+  color: #f1e4da;
+  position: absolute;
+  display: block;
+  top: 10%;
+  left: 20%;
+  font-size: 8em;
+  font-weight: 100; }
+  .plus:hover {
+    color: #19e6b3; }
+
+.minus {
+  color: #f1e4da;
+  position: absolute;
+  display: block;
+  top: 51%;
+  left: 65%;
+  font-size: 16em;
+  font-weight: 100; }
+  .minus:hover {
+    color: #cc0000; }
+
+.my-collection {
+  display: block;
+  color: #808080;
+  letter-spacing: .2em;
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-size: 1.6em;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%); }
+  .my-collection:hover {
+    color: #B74ACC; }
 
 .image {
   font-family: "Varela Round", sans-serif;
@@ -375,6 +423,15 @@ ul {
   margin-left: 350px;
   color: #fff;
   font-family: "Roboto", sans-serif; }
+
+.album-title .record-name, .album-title p {
+  text-decoration: none;
+  color: #f1e4da;
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 3px;
+  font-size: 0.72em; }
 
 /* Web fonts --------*/
 html {
