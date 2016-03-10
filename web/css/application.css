@@ -22,7 +22,7 @@
     .sidebar {
       width: 275px;
       min-width: 275px; } }
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     .sidebar {
       position: static;
       width: 100%;
@@ -60,7 +60,7 @@ input {
     border-radius: 25px;
     color: #666666;
     outline: none; }
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     input {
       width: 50%; } }
 
@@ -77,7 +77,7 @@ input {
     margin: 30px 0; }
     .social-footer a:hover {
       color: #B74ACC; }
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     .social-footer {
       font-size: 1.5em;
       width: 50%;
@@ -117,12 +117,16 @@ h1 .c-logo {
   @media (max-width: 1085px) {
     .gallery {
       padding-left: 275px; } }
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     .gallery {
       padding-left: 0; } }
 
 .album-cover {
   max-width: 100%; }
+
+@media (max-width: 900px) {
+  .gallery-header {
+    justify-content: center; } }
 
 .release {
   width: 278px;
@@ -140,10 +144,10 @@ h1 .c-logo {
     .release {
       width: 200px;
       height: 200px; } }
-  @media (max-width: 854px) {
+  @media (max-width: 900px) {
     .release {
-      width: 175px;
-      height: 175px; } }
+      width: 278px;
+      height: 278px; } }
 
 .portfolioContainer {
   flex-wrap: wrap;
@@ -162,11 +166,11 @@ h1 .c-logo {
     .actual-record {
       width: 200px;
       height: 200px; } }
-  @media (max-width: 854px) {
+  @media (max-width: 900px) {
     .album-cover,
     .actual-record {
-      width: 175px;
-      height: 175px; } }
+      width: 278px;
+      height: 278px; } }
 
 .album-cover-2 {
   width: 278px;
@@ -205,7 +209,7 @@ h1 .c-logo {
     .actual-record {
       background-size: 200px;
       transform: translate3d(-4px, 0px, 0px) rotateZ(0deg); } }
-  @media (max-width: 854px) {
+  @media (max-width: 900px) {
     .actual-record {
       background-size: 175px;
       transform: translate3d(0px, 0px, 0px) rotateZ(0deg); } }
@@ -227,10 +231,10 @@ h1 .c-logo {
       height: 200px;
       top: 0px;
       left: 0px; } }
-  @media (max-width: 854px) {
+  @media (max-width: 900px) {
     .actual-record::after {
-      width: 175px;
-      height: 175px;
+      width: 275px;
+      height: 275px;
       top: 0px;
       left: 0px; } }
 
@@ -392,7 +396,7 @@ ul {
 
 .container {
   max-width: 100%; }
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     .container {
       flex-direction: column; } }
 
@@ -455,7 +459,7 @@ body {
 @media (max-width: 1085px) {
   .logo {
     font-size: 0.8em; } }
-@media (max-width: 480px) {
+@media (max-width: 640px) {
   .logo {
     font-size: 1em; } }
 .logo p {
@@ -467,7 +471,7 @@ body {
     .logo p {
       font-size: 1em;
       width: 90%; } }
-  @media (max-width: 480px) {
+  @media (max-width: 640px) {
     .logo p {
       font-size: 0.9em;
       padding: 0 30px;
