@@ -217,7 +217,6 @@
         // $releases_array = json_decode($output, true);
 
         // print_r($results_array['videos'][0]['uri']);
-        print_r($results_array['labels'][0]);
         return $app['twig']->render("release.html.twig", array(
             'user' => $_SESSION['user'],
             'error' => $error,
@@ -488,17 +487,18 @@
                 //     ));
                 // }
             }
-            // return $app['twig']->render("release.html.twig", array(
-            //             'error' => $error,
-            //             'user' => $_SESSION['user'],
-            //             'results' => $results_array,
-            //             'label' => $results_array['labels'][0],
-            //             'year' => $results_array['year'],
-            //             'genres' => $results_array['genres'],
-            //             'tracklist' => $results_array['tracklist'],
-            //             'artist' => $results_array['artists'][0],
-            //             'images' => $results_array['images']
-            //         ));
+            $error = "Not in your collection";
+            return $app['twig']->render("release.html.twig", array(
+                        'error' => $error,
+                        'user' => $_SESSION['user'],
+                        'results' => $results_array,
+                        'label' => $results_array['labels'][0],
+                        'year' => $results_array['year'],
+                        'genres' => $results_array['genres'],
+                        'tracklist' => $results_array['tracklist'],
+                        'artist' => $results_array['artists'][0],
+                        'images' => $results_array['images']
+                    ));
         });
 
         //COLLECTION ROUTE
