@@ -262,7 +262,36 @@
 
         $app->get("/logout", function() use ($app){
             $_SESSION['user'] = null;
-            return $app['twig']->render("index.html.twig");
+            $error = "Successfully logged out.";
+            $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
+            $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
+            $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
+            $url = "https://api.discogs.com/";
+            $error = null;
+            $results_url = $url . '/database/search?q=&per_page=50&key='. $consumerKey . '&secret=' . $consumerSecret;
+
+            $ch = curl_init();
+            //Set the User-Agent Identifier
+            curl_setopt($ch, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
+            //Set the URL of the page or file to download.
+            curl_setopt($ch, CURLOPT_URL, $results_url);
+            //Ask cURL to return the contents in a variable instead of simply echoing them
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            //Execute the curl session
+            $output = curl_exec($ch);
+            //close the session
+            curl_close ($ch);
+
+
+
+            $results_array = json_decode($output, true);
+            $pages_array = $results_array['pagination'];
+            return $app['twig']->render("index.html.twig", array(
+                'user' => $_SESSION['user'],
+                'error' => $error,
+                'results' => $results_array['results'],
+                'pages' => $pages_array
+            ));
         });
 
         //VIEW SINGLE RECORD ROUTE
@@ -322,6 +351,7 @@
 
             if(isset($_SESSION['user'])){
                 $records = $_SESSION['user']->getRecords();
+
                 if(!$records){
                     $error = null;
                     $new_record = new Record($title, $artist, $genre, $track, $year, $images, $label, $id);
@@ -339,9 +369,12 @@
                         'images' => $results_array['images']));
                 }
                 foreach($records as $record){
+
                     $record_name = $record->getTitle();
+                    $record_track = explode(',', $record->getTrack());
                     $record_artist = $record->getArtist();
-                    if($record_name == $title && $record_artist == $artist ){
+                    if($record_name == $title && $record_artist == $artist){
+
                         $error = "Already in your collection";
                         return $app['twig']->render("release.html.twig", array(
                             'error' => $error,
@@ -479,7 +512,7 @@
 
 
                 } elseif(!isset($_SESSION['user'])) {
-                    $error = "please login to use feature";
+                    $error = "Please login to use feature.";
                     return $app['twig']->render("release.html.twig", array(
                                 'error' => $error,
                                 'user' => $_SESSION['user'],
@@ -507,7 +540,12 @@
         $app->get("/collection/record/{id}", function($id) use($app){
             $user = $_SESSION['user'];
             $record = Record::find($id);
-            return $app['twig']->render("record.html.twig", array('user' => $user, 'record' => $record));
+            $tracks = explode(',', $record->getTrack());
+            return $app['twig']->render("record.html.twig", array(
+                'user' => $user,
+                'record' => $record,
+                'tracks' => $tracks
+            ));
         });
 
         //DELETE RECORD FROM COLLECTION (FROM COLLECTION PAGE)
@@ -518,7 +556,15 @@
             return $app['twig']->render("collection.html.twig", array('collection' => $user->getRecords(), 'user' => $user));
         });
 
-
+        // REGISTER NEW ACCOUNT
+        $app->post("/register", function () use ($app){
+            $username = $_POST['user_name'];
+            $password = $_POST['password'];
+            $new_user = new User($username, $password);
+            $new_user->save();
+            $_SESSION['user'] = $new_user;
+            return $app['twig']->render("collection.html.twig", array('collection' => $new_user->getRecords(), 'user' => $new_user));
+        });
 
 
     return $app;
