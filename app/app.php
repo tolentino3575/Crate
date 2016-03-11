@@ -173,7 +173,7 @@
         $pages_array = $results_array['pagination'];
 
         return $app['twig']->render("search.html.twig", array(
-            'users' => User::getAll(),
+            'user' => $_SESSION['user'],
             'results' => $results_array['results'],
             'pages' => $pages_array
         ));
