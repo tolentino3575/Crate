@@ -21,13 +21,14 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 * Apache
 * PHPUnit
 * Silex
-* Bourbon
 * Atom
 * Terminal
 * Google Fonts
 * Font Awesome
 
-#####CRATE can be viewed at http://patternandshape.github.io/crate
+#####Install CRATE locally by cloning this repository:
+
+https://github.com/patternandshape/crate.git
 
 ## Known Bugs
 
