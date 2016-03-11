@@ -22,6 +22,10 @@
 .gallery-header {
   @extend %flex;
   @extend %gallery-header;
+
+  @media #{$tablet} {
+    justify-content: center;
+  }
 }
 
 
@@ -43,10 +47,18 @@
     height: 200px;
   }
   @media #{$tablet} {
-    width: 175px;
-    height: 175px;
+    width: 278px;
+    height: 278px;
   }
 }
+
+// .release > * {
+//   @media #{tablet} {
+//     width: 275px;
+//     height: 275px;
+//   }
+// }
+
 
 .portfolioContainer {
   @extend %flex;
@@ -69,26 +81,18 @@
     height: 200px;
   }
   @media #{$tablet} {
-    width: 175px;
-    height: 175px;
+    width: 278px;
+    height: 278px;
   }
 }
 
 .album-cover-2 {
-  // @include background-image('1');
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
   width: 278px;
   overflow: hidden;
   z-index: 10;
 }
 
 .album-cover {
-  // @include background-image('1');
-  // background-position: center;
-  // background-repeat: no-repeat;
-  // background-size: cover;
   overflow: hidden;
   z-index: 10;
 }
@@ -148,8 +152,8 @@
     left: 0px;
   }
   @media #{$tablet} {
-    width: 175px;
-    height: 175px;
+    width: 275px;
+    height: 275px;
     top: 0px;
     left: 0px;
   }
