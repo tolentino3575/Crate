@@ -153,6 +153,14 @@
   font-family: $stack-roboto;
   weight: 100;
   text-transform: uppercase;
+  h2 {
+    font-family: $stack-roboto;
+    font-size: 1em;
+    font-weight: 300;
+  }
+  button {
+    background: $color-primary;
+  }
   span {
     display: block;
   }

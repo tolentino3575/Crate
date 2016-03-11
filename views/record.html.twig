@@ -18,7 +18,7 @@
       <div class="logo">
         <h1>
           <a href="/"><span class="c-logo">C</span>RATE
-          <a href="#">
+          <a href="/"></a>
         </h1>
         <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
         {% if user is not empty %}
@@ -26,7 +26,11 @@
         {% endif %}
       </div>
       <!-- login button -->
+      {% if user is not empty %}
+          <a href="/logout">LOG OUT</a>
+      {% else %}
       <a class="login-toggle" href="#">LOG IN</a>
+      {% endif %}
       <!-- login forms -->
       <div class="login">
         <form class="login-form" action='/login'>
@@ -51,31 +55,38 @@
     </div>
     <div class="release-info">
       <div class="row-container">
-
+          <div class="image">
+              <img src="{{record.getImage}}"></img>
+          </div>
             <div class="info">
               <div class="main-info">
-                  <img src="{{record.getImage}}">
+                <span class="artist">{{record.getArtist}}</span>
+                <span class="title">{{record.title}}</span>
+              </div>
               <ul>
                 <li>Label: {{record.getLabel}}</li>
                 <li>Year: {{record.getYear}}</li>
                 <li>Genre: {{record.getGenre}}</li>
-                <li>Tracks: {{record.getTrack}}</li>
-
-
               </ul>
           </div>
             <div class="square-1">
-             <form action="/add_record" method="post">
-                <button type="submit" name="button">Add</button>
-             </form>
+
+
+
+                <button type="button"><span class="plus">+</span></button>
+             
              <form action="/delete_record_from_db/{{ record.getId }}" method="post">
                  <!-- <input type="hidden" name="_method" value="delete"> -->
-                <button type="submit" name="button">Delete</button>
+                <button type="submit"><span class="minus">-</span></button>
              </form>
             </div>
             <div class="square-2">
               <span class="track">Track List</span>
-
+              <ol>
+                  {% for track in tracks %}
+                  <li>{{track}}</li>
+                  {% endfor %}
+              </ol>
           </div>
       </div>
     </div>
