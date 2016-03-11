@@ -13,22 +13,23 @@
   <body>
     <div class="container">
         <div class="sidebar">
-          <!-- logo -->
-          <div class="logo">
-            <h1><a href="#"><span class="c-logo">C</span>RATE<a href="#"></a></h1>
-            <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
+            <!-- logo -->
+            <div class="logo">
+              <h1>
+                <a href="/"><span class="c-logo">C</span>RATE
+                <a href="#">
+              </h1>
+              <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
+              {% if user is not empty %}
+              <p>Welcome, <a href="/collection"><b>{{user.getUserName}}</b></a></p>
+              {% endif %}
+            </div>
+            <!-- login button -->
             {% if user is not empty %}
-            <p>Welcome, <a href="/collection"><b>{{user.getUserName}}</b></a></p>
+                <a href="/logout">LOG OUT</a>
             {% else %}
-            <p>{{ error }}</p>
-            {% endif %}
-          </div>
-          <!-- login button -->
-          {% if user is not empty %}
-              <a href="/logout">LOG OUT</a>
-          {% else %}
-          <a class="login-toggle" href="#">LOG IN</a>
-          {% endif %}
+            <a class="login-toggle" href="#">LOG IN</a>
+
           <!-- login forms -->
         <div class="login">
             <form class="login-form" action="/login">
@@ -46,6 +47,7 @@
             <button type="submit" name="button"><i class="fa fa-play"></i></button>
           </form>
         </div>
+        {% endif %}
           <!-- search bar -->
           <div class="search">
             <form class="search-form" action="/search" method="">

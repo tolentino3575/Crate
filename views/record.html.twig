@@ -26,7 +26,11 @@
         {% endif %}
       </div>
       <!-- login button -->
+      {% if user is not empty %}
+          <a href="/logout">LOG OUT</a>
+      {% else %}
       <a class="login-toggle" href="#">LOG IN</a>
+      {% endif %}
       <!-- login forms -->
       <div class="login">
         <form class="login-form" action='/login'>
@@ -69,11 +73,11 @@
 
 
              <form action="/add_record" method="post">
-                <button type="submit" name="button">Add</button>
+                <button type="submit"><span class="plus">+</span></button>
              </form>
              <form action="/delete_record_from_db/{{ record.getId }}" method="post">
                  <!-- <input type="hidden" name="_method" value="delete"> -->
-                <button type="submit" name="button">Delete</button>
+                <button type="submit"><span class="minus">-</span></button>
              </form>
             </div>
             <div class="square-2">
