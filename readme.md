@@ -50,7 +50,7 @@ https://github.com/patternandshape/crate.git
 * To view, type "localhost:8000" in browser
 
 
-## Known Bugs
+#### Known Bugs
 * Some records will add multiple copies to your collection, and not display message about already being in your collection
 * My Collection not hidden when not logged in to site
 * Media queries a bit muddled on older iPhone models
