@@ -24,7 +24,11 @@
             {% endif %}
           </div>
           <!-- login button -->
+          {% if user is not empty %}
+              <a href="/logout">LOG OUT</a>
+          {% else %}
           <a class="login-toggle" href="#">LOG IN</a>
+          {% endif %}
           <!-- login forms -->
         <div class="login">
             <form class="login-form" action="/login">
@@ -32,13 +36,13 @@
               <input type="password" name="password" placeholder="Password">
               <button type="submit" name="button"><i class="fa fa-play"></i></button>
             </form>
-         
+
           <!-- create account button -->
           <a class="create-account" href="#">Create An Account</a>
           <!-- create account forms -->
-          <form class="account-form">
-            <input type="text" name="name" placeholder="New Username">
-            <input type="password" name="name" placeholder="New Password">
+          <form class="account-form" action="/register" method="post">
+            <input type="text" name="user_name" placeholder="New Username">
+            <input type="text" name="password" placeholder="New Password">
             <button type="submit" name="button"><i class="fa fa-play"></i></button>
           </form>
         </div>
