@@ -410,6 +410,12 @@ img {
   font-family: "Roboto", sans-serif;
   weight: 100;
   text-transform: uppercase; }
+  .square-1 h2 {
+    font-family: "Roboto", sans-serif;
+    font-size: 1em;
+    font-weight: 300; }
+  .square-1 button {
+    background: #252525; }
   .square-1 span {
     display: block; }
   @media (max-width: 1085px) {
@@ -607,6 +613,8 @@ body {
       font-size: 0.9em;
       padding: 0 30px;
       margin-top: -15px; } }
+.logo .greeting {
+  padding-top: 50px; }
 
 a:hover {
   color: #B74ACC; }

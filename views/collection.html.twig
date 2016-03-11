@@ -31,7 +31,7 @@
           <div class="search">
             <form class="search-form" action="/search" method="">
               <input type="text" name="search_term" placeholder="Search">
-              <a href="#"><button type="button" name="button"><i class="fa fa-search"></i></button></a>
+              <a href="#"><button type="submit" name="button"><i class="fa fa-search"></i></button></a>
             </form>
           </div>
 
@@ -53,7 +53,7 @@
             <a href="/collection/record/{{ record.getId }}"><img class="album-cover" src="{{ record.getImage }}" alt="" /></a>
             <div class="actual-record"></div>
             <figcaption class="album-title">
-              <a href="/collection/record/{{ record.getId }}"><p>{{ record.getTitle }}</p></a>
+              <p>{{ record.getTitle }}</p>
             </figcaption>
           </div>
               {% endfor %}

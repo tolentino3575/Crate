@@ -204,7 +204,6 @@
         $results_array = json_decode($output, true);
 
         $error = null;
-
         return $app['twig']->render("release.html.twig", array(
             'user' => $_SESSION['user'],
             'error' => $error,
@@ -215,6 +214,7 @@
             'tracklist' => $results_array['tracklist'],
             'artist' => $results_array['artists'][0],
             'images' => $results_array['images']
+
         ));
     });
 
@@ -405,7 +405,7 @@
                     }
                 }
             } elseif(!isset($_SESSION['user'])) {
-                        $error = "Please login to use feature.";
+                        $error = "Please login to use feature";
                         return $app['twig']->render("release.html.twig", array(
                             'error' => $error,
                             'user' => $_SESSION['user'],

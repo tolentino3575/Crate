@@ -18,7 +18,7 @@
       <div class="logo">
         <h1>
           <a href="/"><span class="c-logo">C</span>RATE
-          <a href="#">
+          <a href="/"></a>
         </h1>
         <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
         {% if user is not empty %}
@@ -27,7 +27,7 @@
       </div>
       <!-- login button -->
       {% if user is not empty %}
-          <a href="/logout">LOG OUT</a>
+          <a class="login-toggle" href="/logout">LOG OUT</a>
       {% else %}
       <a class="login-toggle" href="#">LOG IN</a>
       {% endif %}
@@ -86,6 +86,11 @@
                  <!-- <input type="hidden" name="_method" value="delete"> -->
                 <button type="submit"><span class="minus">-</span></button>
              </form>
+             {% if user is not empty %}
+             <a href="/collection"><span class="my-collection">My Collection</span></a>
+             {% else %}
+               <a><span class="my-collection">CRATE</span></a>
+              {% endif %}
             </div>
             <div class="square-2">
               <span class="track">Track List</span>
