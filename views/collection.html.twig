@@ -45,10 +45,10 @@
         <div class="portfolioContainer">
             {% for record in collection %}
           <div class="release experimental">
-            <a href="release.html"><img class="album-cover" src="{{ record.getImage }}" alt="" /></a>
+            <a href="/release/{{ record.getId }}"><img class="album-cover" src="{{ record.getImage }}" alt="" /></a>
             <div class="actual-record"></div>
             <figcaption class="album-title">
-              <a href="release.html"><p>{{ record.getTitle }}</p></a>
+              <a href="/collection/record/{{ record.getId }}"><p>{{ record.getTitle }}</p></a>
             </figcaption>
           </div>
               {% endfor %}

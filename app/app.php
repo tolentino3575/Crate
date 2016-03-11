@@ -22,6 +22,9 @@
     Debug::enable();
     $app = new Silex\Application();
 
+    if(!isset($_SESSION['user'])){
+        $_SESSION['user'] = null;
+    }
         $app['debug'] = true;
 
     $app->register(new Silex\Provider\TwigServiceProvider(), array(
@@ -33,7 +36,7 @@
       $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
       $token = 'AlgbUBFeznIfeIvjzNEIvmFmiDQGWHtbgrFJuAGC';
       $url = "https://api.discogs.com/";
-
+      $error = null;
       $results_url = $url . '/database/search?q=&per_page=50&key='. $consumerKey . '&secret=' . $consumerSecret;
 
       $ch = curl_init();
@@ -48,9 +51,12 @@
       //close the session
       curl_close ($ch);
 
+
+
       $results_array = json_decode($output, true);
       $pages_array = $results_array['pagination'];
         return $app['twig']->render("index.html.twig", array(
+            'error' => $error,
             'user' => $_SESSION['user'],
             'results' => $results_array['results'],
             'pages' => $pages_array
@@ -199,24 +205,6 @@
 
         $error = null;
 
-        // // print_r($results_array['videos'][0]['uri']);
-        // // releases curl
-        // $releases_url = $url . '/artists/' . $id .'/releases'. '?key=' . $consumerKey . '&secret=' . $consumerSecret;
-        // $ch2 = curl_init();
-        // //Set the User-Agent Identifier
-        // curl_setopt($ch2, CURLOPT_USERAGENT, 'CRATE/0.1 +http://your-site-here.com');
-        // //Set the URL of the page or file to download.
-        // curl_setopt($ch2, CURLOPT_URL, $releases_url);
-        // //Ask cURL to return the contents in a variable instead of simply echoing them
-        // curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
-        // //Execute the curl session
-        // $output = curl_exec($ch2);
-        // //close the session
-        // curl_close ($ch2);
-        //
-        // $releases_array = json_decode($output, true);
-
-        // print_r($results_array['videos'][0]['uri']);
         return $app['twig']->render("release.html.twig", array(
             'user' => $_SESSION['user'],
             'error' => $error,
@@ -472,20 +460,7 @@
                         'artist' => $results_array['artists'][0],
                         'images' => $results_array['images']
                     ));
-                }// } else {
-                //     $error = "Record is not in your collection";
-                //     return $app['twig']->render("release.html.twig", array(
-                //         'error' => $error,
-                //         'user' => $_SESSION['user'],
-                //         'results' => $results_array,
-                //         'label' => $results_array['labels'][0],
-                //         'year' => $results_array['year'],
-                //         'genres' => $results_array['genres'],
-                //         'tracklist' => $results_array['tracklist'],
-                //         'artist' => $results_array['artists'][0],
-                //         'images' => $results_array['images']
-                //     ));
-                // }
+                }
             }
             $error = "Not in your collection";
             return $app['twig']->render("release.html.twig", array(
@@ -509,6 +484,13 @@
                 'user' => $user
             ));
         });
+
+        $app->get("/collection/record/{id}", function($id) use($app){
+            $user = $_SESSION['user'];
+            $record = Record::find($id);
+            return $app['twig']->render("record.html.twig", array('user' => $user, 'record' => $record));
+        });
+
 
 
 
