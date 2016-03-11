@@ -16,6 +16,7 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 * HTML
 * SCSS
 * PHP
+* Composer
 * Twig
 * PHPMyAdmin
 * Apache
@@ -25,14 +26,34 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 * Terminal
 * Google Fonts
 * Font Awesome
+* Discogs API
 
 ####Install CRATE locally by cloning this repository:
 
 https://github.com/patternandshape/crate.git
 
-## Known Bugs
+* From terminal, enter "mysql.server start" to start the MySQL servers and enter mysql shell
+* Next enter "mysql -uroot -proot" to set username and password for PhpMyAdmin
 
-*
+* From bash terminal, enter "apachectl start" to start PhpMyAdmin
+* In browser, type "localhost:8080/phpmyadmin"
+* If prompted, both your username and password are "root"
+
+* From PhpMyAdmin, import "discogs" and "discogs_test" databases included in crate folder
+
+* From mysql shell in terminal, enter "USE discogs;" to enter database
+
+* From bash terminal, run "composer install" while in project root folder
+
+* From bash terminal, enter "php -S localhost:8000" while in the web folder
+
+* To view, type "localhost:8000" in browser
+
+
+## Known Bugs
+* Some records will add multiple copies to your collection, and not display message about already being in your collection
+* My Collection not hidden when not logged in to site
+* Media queries a bit muddled on older iPhone models
 
 ##### License
 
