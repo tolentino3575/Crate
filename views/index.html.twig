@@ -2,10 +2,10 @@
 <html>
   <head>
     <meta name="viewport" content="width=device-width">
-    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="/../css/normalize.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href='https://fonts.googleapis.com/css?family=Varela+Round|Monoton' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" href="css/application.css">
+    <link rel="stylesheet" href="/../css/application.css">
     <script src="/../js/jquery-1.12.1.js" type="text/javascript"></script>
     <script type="text/javascript" src="/../js/scripts.js"></script>
     <title>CRATE</title>
@@ -17,7 +17,7 @@
             <div class="logo">
               <h1>
                 <a href="/"><span class="c-logo">C</span>RATE
-                <a href="#">
+                <a href="/"></a>
               </h1>
               <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
               {% if user is not empty %}
@@ -68,7 +68,11 @@
 
           {% for result in results %}
           <div class="release experimental">
+            {% if result.thumb is not empty%}
             <div class="album-cover"><img src='{{result.thumb}}' style="height: 300px;"></img></div>
+            {% else %}
+            <div class="album-cover"><img src='../img/1.jpg' style="height: 300px;"></img></div>
+            {% endif %}
             <div class="actual-record"></div>
             <figcaption class="album-title">
             <p><a href ="/release/{{result.id}}">{{result.title}}</a></p>
