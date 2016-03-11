@@ -21,7 +21,12 @@
             {% if user is not empty %}
             <p>Welcome, <a href="/collection"><b>{{user.getUserName}}</b></a></p>
             {% endif %}
+
+            {% if user is not empty %}
+                <a href="/logout">LOG OUT</a>
+            {% endif %}
           </div>
+
           <!-- search bar -->
           <div class="search">
             <form class="search-form" action="/search" method="">

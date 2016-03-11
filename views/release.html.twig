@@ -26,7 +26,11 @@
         {% endif %}
       </div>
       <!-- login button -->
+      {% if user is not empty %}
+          <a href="/logout">LOG OUT</a>
+      {% else %}
       <a class="login-toggle" href="#">LOG IN</a>
+      {% endif %}
       <!-- login forms -->
       <div class="login">
         <form class="login-form" action='/login'>
