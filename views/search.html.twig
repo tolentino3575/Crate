@@ -56,15 +56,19 @@
       <div class="gallery">
         <div class="portfolioContainer">
 
-          {% for result in results %}
-          <div class="release experimental">
-            <div class="album-cover"><img src='{{result.thumb}}' style="height: 300px;"></img></div>
-            <div class="actual-record"></div>
-            <figcaption class="album-title">
-            <p><a href ="/release/{{result.id}}">{{result.title}}</a></p>
-            </figcaption>
-          </div>
-          {% endfor %}
+            {% for result in results %}
+            <div class="release experimental">
+              {% if result.thumb is not empty%}
+              <div class="album-cover"><img src='{{result.thumb}}' style="height: 300px;"></img></div>
+              {% else %}
+              <div class="album-cover"><img src='../img/1.jpg' style="height: 300px;"></img></div>
+              {% endif %}
+              <div class="actual-record"></div>
+              <figcaption class="album-title">
+              <p><a href ="/release/{{result.id}}">{{result.title}}</a></p>
+              </figcaption>
+            </div>
+            {% endfor %}
         </div>
         {% if pages.page <= 1000 and pages.page >= 2 %}
             {% set nextpage = pages.page + 1 %}
