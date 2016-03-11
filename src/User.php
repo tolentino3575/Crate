@@ -68,7 +68,9 @@
 
         function addRecord($record)
         {
-            $GLOBALS['DB']->exec("INSERT INTO collections (user_id, album_id) VALUES ({$this->getId()}, {$record->getId()});");
+            $GLOBALS['DB']->exec("INSERT INTO collections (user_id, album_id) 
+            VALUES ({$this->getId()}, {$record->getId()});");
+
         }
 
         function getRecords()

@@ -1,10 +1,62 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <title></title>
-    </head>
-    <body>
-        <h1>Your Collection Page</h1>
-    </body>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/../css/normalize.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100italic,100,300,300italic,400italic|Monoton|Varela+Round' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/../css/application.css">
+    <script src="../web/js/jquery-1.12.1.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/../js/scripts.js"></script>
+
+    <title>CRATE</title>
+  </head>
+  <body>
+    <div class="container">
+        <div class="sidebar">
+          <!-- logo -->
+          <div class="logo">
+            <h1><a href="/"><span class="c-logo">C</span>RATE<a href="/"></a></h1>
+            <p>Welcome to <b>CRATE</b>, home of your record collection.</p>
+            {% if user is not empty %}
+            <p>Welcome, <a href="/collection"><b>{{user.getUserName}}</b></a></p>
+            {% endif %}
+          </div>
+          <!-- search bar -->
+          <div class="search">
+            <form class="search-form" action="/search" method="">
+              <input type="text" name="search_term" placeholder="Search">
+              <a href="#"><button type="button" name="button"><i class="fa fa-search"></i></button></a>
+            </form>
+          </div>
+
+          <!-- social icons -->
+          <div class="social-footer">
+            <a href="https://github.com/patternandshape/crate"><i class="fa fa-github"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="collection.html"><i class="fa fa-twitter"></i></a>
+          </div>
+      </div>
+
+      <div class="gallery">
+        <div class="gallery-header">
+          <p>{{ user.getUserName }}'s Collection</p>
+        </div>
+        <div class="portfolioContainer">
+            {% for record in collection %}
+          <div class="release experimental">
+            <a href="/collection/record/{{ record.getId }}"><img class="album-cover" src="{{ record.getImage }}" alt="" /></a>
+            <div class="actual-record"></div>
+            <figcaption class="album-title">
+              <a href="/collection/record/{{ record.getId }}"><p>{{ record.getTitle }}</p></a>
+            </figcaption>
+          </div>
+              {% endfor %}
+
+
+
+        </div>
+      </div>
+    </div>
+  </body>
 </html>
