@@ -31,7 +31,7 @@
       <div class="login">
         <form class="login-form" action='/login'>
           <input type="text" name="user_name" placeholder="Username">
-          <input type="text" name="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password">
           <a href="#"><button type="submit" name="button"><i class="fa fa-play"></i></button></a>
         </form>
       </div>
@@ -58,9 +58,6 @@
           </div>
             <div class="info">
               <div class="main-info">
-                  {% if error is not empty%}
-                    <h2>{{ error }}</h2>
-                  {% endif %}
                 <span class="artist">{{artist.name}}</span>
                 {% for track in tracklist|slice(0,1)%}
                 <span class="title">{{track.title}}</span>
@@ -75,12 +72,15 @@
               </ul>
           </div>
             <div class="square-1">
+              {% if error is not empty%}
+                <h2>{{ error }}</h2>
+              {% endif %}
              <form action="/add_record" method="post">
-                <button type="submit" name="button">Add</button>
+               <button type="submit"><span class="plus">+</span></button>
              </form>
              <form action="/delete_record" method="post">
                  <!-- <input type="hidden" name="_method" value="delete"> -->
-                <button type="submit" name="button">Delete</button>
+                <button type="submit"><span class="minus">-</span></button>
              </form>
             </div>
             <div class="square-2">
