@@ -81,7 +81,9 @@
             </div>
         {% else %}
         {% set nextpage = pages.page + 1 %}
-
+          <div class="back-forward">
+          <div class="back"><a href="/search/{{nextpage}}"><i class="fa fa-forward"></i></a></div>
+        </div>
         {% endif %}
       </div>
     </div>
