@@ -50,19 +50,6 @@ h1 .c-logo {
   text-align: center;
   margin: auto; }
 
-.login {
-  display: none;
-  flex: 0.5;
-  width: 80%;
-  margin: auto;
-  margin-bottom: 32px; }
-  .login input {
-    width: 100%;
-    margin-bottom: 20px; }
-  .login button {
-    display: block;
-    margin: auto; }
-
 .search {
   width: 100%;
   flex: 1;
@@ -75,7 +62,7 @@ input {
   border: 1px solid #f1e4da;
   padding: 10px 25px;
   width: 70%; }
-  input[type="text"] {
+  input[type="text"], input[type="password"] {
     font-size: .9em;
     border-radius: 25px;
     color: #666666;
@@ -105,6 +92,36 @@ input {
       display: block;
       left: 25%;
       height: 75px; } }
+
+h1 .c-logo {
+  display: inline-block;
+  animation: rotate 3s ease-out; }
+
+@keyframes rotate {
+  100% {
+    transform: rotateZ(360deg); } }
+.login {
+  display: none;
+  flex: 0.5;
+  width: 80%;
+  margin: auto;
+  margin-bottom: 32px; }
+  .login input {
+    width: 100%;
+    margin-bottom: 20px; }
+  .login button {
+    display: block;
+    margin: auto; }
+  .login .login-form {
+    margin-bottom: 1.5em; }
+  .login .create-account {
+    display: block;
+    margin: auto;
+    text-align: center; }
+
+.account-form {
+  display: none;
+  margin-top: 0.5em; }
 
 .gallery {
   flex-direction: column;
@@ -539,6 +556,14 @@ img {
   letter-spacing: 3px;
   font-size: 0.72em; }
 
+button, .login button {
+  background-color: #B74ACC;
+  border: 0;
+  font-size: .8em;
+  border-radius: 25px;
+  text-transform: uppercase;
+  color: #fff; }
+
 /* Web fonts --------*/
 html {
   -webkit-font-smoothing: antialiased;
@@ -583,27 +608,11 @@ a:hover {
   color: #B74ACC; }
 
 button {
-  -webkit-appearance: button;
-  cursor: pointer;
-  background-color: #B74ACC;
-  border: 0;
-  font-size: .8em;
-  border-radius: 25px;
   margin-left: 10px;
-  padding: 10px 20px;
-  text-transform: uppercase;
-  color: #fff; }
+  padding: 10px 20px; }
 
 .login button {
-  -webkit-appearance: button;
-  cursor: pointer;
-  background-color: #B74ACC;
-  border: 0;
-  font-size: .8em;
-  border-radius: 25px;
-  padding: 10px 30px;
-  text-transform: uppercase;
-  color: #fff; }
+  padding: 10px 30px; }
 
 .back-forward {
   margin: 20px auto;
