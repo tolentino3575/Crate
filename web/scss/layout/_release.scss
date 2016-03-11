@@ -15,6 +15,12 @@
     letter-spacing: .04em;
   }
 
+  @media #{$big-medium} {
+    width: 95%;
+    height: 100vh;
+    justify-content: center;
+  }
+
   @media #{$laptop} {
     margin-left: 275px;
   }
@@ -41,14 +47,13 @@
   flex-wrap: wrap;
 
   @media #{$big-medium} {
-    width: 900px;
-    height: 900px;
+    width: 95%;
+    height: 100vh;
     justify-content: center;
   }
 
   @media #{$laptop} {
     width: 100vw;
-    height: 100vh;
   }
 
   @media #{$tablet} {

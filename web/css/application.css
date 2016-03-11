@@ -296,6 +296,11 @@ figcaption {
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     letter-spacing: .04em; }
+  @media (max-width: 1400px) {
+    .release-info {
+      width: 95%;
+      height: 100vh;
+      justify-content: center; } }
   @media (max-width: 1085px) {
     .release-info {
       margin-left: 275px; } }
@@ -317,13 +322,12 @@ figcaption {
   flex-wrap: wrap; }
   @media (max-width: 1400px) {
     .row-container {
-      width: 900px;
-      height: 900px;
+      width: 95%;
+      height: 100vh;
       justify-content: center; } }
   @media (max-width: 1085px) {
     .row-container {
-      width: 100vw;
-      height: 100vh; } }
+      width: 100vw; } }
   @media (max-width: 850px) {
     .row-container {
       align-items: flex-start;
@@ -609,10 +613,12 @@ a:hover {
 
 button {
   margin-left: 10px;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  outline: none; }
 
 .login button {
-  padding: 10px 30px; }
+  padding: 10px 30px;
+  outline: none; }
 
 .back-forward {
   margin: 20px auto;
@@ -628,6 +634,9 @@ button {
     color: #B74ACC; }
     .back a:hover, .forward a:hover {
       color: #f1e4da; }
+  @media (max-width: 640px) {
+    .back, .forward {
+      font-size: 2.5em; } }
 
 .back {
   padding-left: 60px; }

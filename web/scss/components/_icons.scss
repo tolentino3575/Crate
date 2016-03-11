@@ -18,6 +18,9 @@
       color: $crate-beige;
     }
   }
+  @media #{$mobile} {
+    font-size: 2.5em;
+  }
 }
 
 .back {
