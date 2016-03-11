@@ -26,7 +26,7 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 * Google Fonts
 * Font Awesome
 
-###Install CRATE locally by cloning this repository:
+####Install CRATE locally by cloning this repository:
 
 https://github.com/patternandshape/crate.git
 
