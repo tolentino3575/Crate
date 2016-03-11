@@ -79,7 +79,9 @@
             <div class="square-2">
               <span class="track">Track List</span>
               <ol>
-                  <li>{{record.getTrack}}</li>
+                  {% for track in tracks %}
+                  <li>{{track}}</li>
+                  {% endfor %}
               </ol>
           </div>
       </div>
