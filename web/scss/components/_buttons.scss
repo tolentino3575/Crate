@@ -4,9 +4,11 @@ button {
   @extend %sidebar-btn;
   margin-left: 10px;
   padding: 10px 20px;
+  outline:none
 }
 
 .login button {
   @extend %sidebar-btn;
   padding: 10px 30px;
+  outline:none
 }

@@ -609,10 +609,12 @@ a:hover {
 
 button {
   margin-left: 10px;
-  padding: 10px 20px; }
+  padding: 10px 20px;
+  outline: none; }
 
 .login button {
-  padding: 10px 30px; }
+  padding: 10px 30px;
+  outline: none; }
 
 .back-forward {
   margin: 20px auto;
@@ -628,6 +630,9 @@ button {
     color: #B74ACC; }
     .back a:hover, .forward a:hover {
       color: #f1e4da; }
+  @media (max-width: 640px) {
+    .back, .forward {
+      font-size: 2.5em; } }
 
 .back {
   padding-left: 60px; }

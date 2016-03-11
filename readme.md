@@ -29,6 +29,10 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 
 #####CRATE can be viewed at http://patternandshape.github.io/crate
 
+## Known Bugs
+
+*
+
 ##### License
 
 *This software is licensed under the MIT license.*
