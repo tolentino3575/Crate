@@ -17,14 +17,14 @@ body {
   color: $color-primary;
   margin-top: 3em;
   margin-bottom: 0;
-  @media #{$medium} {
+  @media #{$laptop} {
     margin-top: 2em;
   }
   }
-  @media #{$medium} {
+  @media #{$laptop} {
     font-size: 0.8em;
   }
-  @media #{$small} {
+  @media #{$mobile} {
     font-size: 1em;
   }
   p {
@@ -32,11 +32,11 @@ body {
     width: 75%;
     margin: auto;
     font-size: .95em;
-    @media #{$medium} {
+    @media #{$laptop} {
       font-size: 1em;
       width: 90%;
     }
-    @media #{$small} {
+    @media #{$mobile} {
         font-size: 0.9em;
         padding: 0 30px;
         margin-top: -15px;
@@ -46,6 +46,6 @@ body {
 
 a {
   &:hover {
-    color: #B74ACC;
+    color: $color-accent;
   }
 }

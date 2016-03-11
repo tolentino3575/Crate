@@ -1,3 +1,5 @@
+//Main Gallery div
+
 .gallery {
   flex-direction: column;
   @extend %flex;
@@ -7,17 +9,15 @@
   width: 100%;
   overflow-x: hidden;
   padding-right: 60px;
-  @media #{$medium} {
+  @media #{$laptop} {
     padding-left: 275px;
   }
-  @media #{$small} {
+  @media #{$mobile} {
     padding-left: 0;
   }
 }
 
-.album-cover {
-  max-width: 100%;
-}
+//Gallery heading
 
 .gallery-header {
   @extend %flex;
@@ -28,6 +28,21 @@
   }
 }
 
+
+//////// Album Gallery Zone ////////////
+
+//Secondary Gallery div
+
+.portfolioContainer {
+  @extend %flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-content: space-around;
+  width: 100%;
+  margin: 30px 0 0 60px;
+}
+
+//Individual Album div
 
 .release {
   width: 278px;
@@ -42,7 +57,7 @@
   &:hover {
     transform: scale(1.05);
   }
-  @media #{$medium} {
+  @media #{$laptop} {
     width: 200px;
     height: 200px;
   }
@@ -52,21 +67,8 @@
   }
 }
 
-// .release > * {
-//   @media #{tablet} {
-//     width: 275px;
-//     height: 275px;
-//   }
-// }
-
-
-.portfolioContainer {
-  @extend %flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-content: space-around;
-  width: 100%;
-  margin: 30px 0 0 60px;
+.album-cover {
+  max-width: 100%;
 }
 
 // cool record effect //
@@ -76,7 +78,7 @@
   position: absolute;
   width: 278px;
   height: 278px;
-  @media #{$medium}{
+  @media #{$laptop}{
     width: 200px;
     height: 200px;
   }
@@ -124,7 +126,7 @@
   background-size: 270px 270px;
   transform: translate3d(0px, 0px, 0px) rotateZ(0deg);
   transition: transform 800ms cubic-bezier(0.390, 0.575, 0.565, 1.000);
-  @media #{$medium}{
+  @media #{$laptop}{
     background-size: 200px;
     transform: translate3d(-4px, 0px, 0px) rotateZ(0deg);
   }
@@ -145,7 +147,7 @@
   left: 4px;
   width: 270px;
   height: 270px;
-  @media #{$medium}{
+  @media #{$laptop}{
     width: 200px;
     height: 200px;
     top: 0px;
