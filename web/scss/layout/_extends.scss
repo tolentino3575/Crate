@@ -1,6 +1,10 @@
+// display flex
+
 %flex {
   display: flex;
 }
+
+//gallery header, really?
 
 %gallery-header {
   margin-left: 70px;
@@ -20,11 +24,14 @@
   }
 }
 
+//MAIN CONTAIN
 %main-container {
   background-color: $color-primary;
   color: #fff;
   font-family: $stack-roboto;
 }
+
+//link styling
 
 %links {
   text-decoration: none;

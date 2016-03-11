@@ -1,7 +1,9 @@
+//Main container div for all pages that include sidebar
+
 .container {
   @extend %flex;
   max-width: 100%;
-  @media #{$small} {
+  @media #{$mobile} {
     flex-direction: column;
   }
 }

@@ -3,7 +3,7 @@
 button {
   -webkit-appearance: button;
   cursor: pointer;
-  background-color: #B74ACC;
+  background-color: $color-accent;
   border: 0;
   font-size: .8em;
   border-radius: 25px;
@@ -16,7 +16,7 @@ button {
 .login button {
   -webkit-appearance: button;
   cursor: pointer;
-  background-color: #B74ACC;
+  background-color: $color-accent;
   border: 0;
   font-size: .8em;
   border-radius: 25px;

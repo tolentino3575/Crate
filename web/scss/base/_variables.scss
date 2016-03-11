@@ -12,16 +12,13 @@ $color-primary: $dark-grey;
 $crate-beige: $beige;
 $color-accent: $fuschia;
 
-
 // Font stacks
 $stack-monoton: 'Monoton', cursive;
 $stack-varela: 'Varela Round', sans-serif;
 $stack-roboto: 'Roboto', sans-serif;
 
-
 // Media Queries
-
 $big-medium: '(max-width: 1400px)';
-$medium: '(max-width: 1085px)';
+$laptop: '(max-width: 1085px)';
 $tablet: '(max-width: 850px)';
-$small: '(max-width: 640px)';
+$mobile: '(max-width: 640px)';
