@@ -68,7 +68,7 @@
              <form action="/add_record" method="post">
                 <button type="submit" name="button">Add</button>
              </form>
-             <form action="/delete_record" method="post">
+             <form action="/delete_record_from_db/{{ record.getId }}" method="post">
                  <!-- <input type="hidden" name="_method" value="delete"> -->
                 <button type="submit" name="button">Delete</button>
              </form>

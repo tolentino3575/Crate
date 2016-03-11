@@ -397,7 +397,7 @@
             ));
         });
 
-        //DELETE RECORD FROM COLLECTION
+        //DELETE RECORD FROM COLLECTION (FROM RELEASE PAGE)
         $app->post("/delete_record", function() use ($app){
             $consumerKey = 'sgLbtXTMMDiImTNCBXgm';
             $consumerSecret = 'EzoLruPOcgrPzIYtiqARnBmbfNPsLYvN';
@@ -417,7 +417,7 @@
             $output = curl_exec($ch);
             //close the session
             curl_close ($ch);
-            $records = $_SESSION['user']->getRecords();
+
             // var_dump($records);
             $results_array = json_decode($output, true);
             $tracks = array();
@@ -443,37 +443,55 @@
             $images = $images[0];
             $id = null;
 
-            foreach($records as $record){
-                $record_name = $record->getTitle();
-                $record_artist = $record->getArtist();
-                if($record_name == $title && $record_artist == $artist ){
-                    $record->delete();
-                    $error = "Record deleted";
-                    return $app['twig']->render("release.html.twig", array(
-                        'error' => $error,
-                        'user' => $_SESSION['user'],
-                        'results' => $results_array,
-                        'label' => $results_array['labels'][0],
-                        'year' => $results_array['year'],
-                        'genres' => $results_array['genres'],
-                        'tracklist' => $results_array['tracklist'],
-                        'artist' => $results_array['artists'][0],
-                        'images' => $results_array['images']
-                    ));
+            if(isset($_SESSION['user'])){
+                $records = $_SESSION['user']->getRecords();
+                foreach($records as $record){
+                    $record_name = $record->getTitle();
+                    $record_artist = $record->getArtist();
+                    if($record_name == $title && $record_artist == $artist ){
+                        $record->delete();
+                        $error = "Record deleted";
+                        return $app['twig']->render("release.html.twig", array(
+                            'error' => $error,
+                            'user' => $_SESSION['user'],
+                            'results' => $results_array,
+                            'label' => $results_array['labels'][0],
+                            'year' => $results_array['year'],
+                            'genres' => $results_array['genres'],
+                            'tracklist' => $results_array['tracklist'],
+                            'artist' => $results_array['artists'][0],
+                            'images' => $results_array['images']
+                        ));
+                    }
                 }
-            }
-            $error = "Not in your collection";
-            return $app['twig']->render("release.html.twig", array(
-                        'error' => $error,
-                        'user' => $_SESSION['user'],
-                        'results' => $results_array,
-                        'label' => $results_array['labels'][0],
-                        'year' => $results_array['year'],
-                        'genres' => $results_array['genres'],
-                        'tracklist' => $results_array['tracklist'],
-                        'artist' => $results_array['artists'][0],
-                        'images' => $results_array['images']
-                    ));
+                    $error = "Not in your collection";
+                    return $app['twig']->render("release.html.twig", array(
+                                'error' => $error,
+                                'user' => $_SESSION['user'],
+                                'results' => $results_array,
+                                'label' => $results_array['labels'][0],
+                                'year' => $results_array['year'],
+                                'genres' => $results_array['genres'],
+                                'tracklist' => $results_array['tracklist'],
+                                'artist' => $results_array['artists'][0],
+                                'images' => $results_array['images']
+                            ));
+
+
+                } elseif(!isset($_SESSION['user'])) {
+                    $error = "please login to use feature";
+                    return $app['twig']->render("release.html.twig", array(
+                                'error' => $error,
+                                'user' => $_SESSION['user'],
+                                'results' => $results_array,
+                                'label' => $results_array['labels'][0],
+                                'year' => $results_array['year'],
+                                'genres' => $results_array['genres'],
+                                'tracklist' => $results_array['tracklist'],
+                                'artist' => $results_array['artists'][0],
+                                'images' => $results_array['images']
+                            ));
+                }
         });
 
         //COLLECTION ROUTE
@@ -485,10 +503,19 @@
             ));
         });
 
+        //VIEW SINGLE RECORD FROM COLLECTION
         $app->get("/collection/record/{id}", function($id) use($app){
             $user = $_SESSION['user'];
             $record = Record::find($id);
             return $app['twig']->render("record.html.twig", array('user' => $user, 'record' => $record));
+        });
+
+        //DELETE RECORD FROM COLLECTION (FROM COLLECTION PAGE)
+        $app->post("/delete_record_from_db/{id}", function($id) use ($app){
+            $record = Record::find($id);
+            $record->delete();
+            $user = $_SESSION['user'];
+            return $app['twig']->render("collection.html.twig", array('collection' => $user->getRecords(), 'user' => $user));
         });
 
 
