@@ -296,6 +296,11 @@ figcaption {
     font-family: "Roboto", sans-serif;
     font-weight: 100;
     letter-spacing: .04em; }
+  @media (max-width: 1400px) {
+    .release-info {
+      width: 95%;
+      height: 100vh;
+      justify-content: center; } }
   @media (max-width: 1085px) {
     .release-info {
       margin-left: 275px; } }
@@ -317,13 +322,12 @@ figcaption {
   flex-wrap: wrap; }
   @media (max-width: 1400px) {
     .row-container {
-      width: 900px;
-      height: 900px;
+      width: 95%;
+      height: 100vh;
       justify-content: center; } }
   @media (max-width: 1085px) {
     .row-container {
-      width: 100vw;
-      height: 100vh; } }
+      width: 100vw; } }
   @media (max-width: 850px) {
     .row-container {
       align-items: flex-start;
