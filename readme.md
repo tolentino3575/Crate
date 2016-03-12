@@ -31,12 +31,19 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 ####Install CRATE locally by cloning this repository:
 
 https://github.com/patternandshape/crate.git
-
+@epicodus~~~~~~~~~
 * From terminal, enter "mysql.server start" to start the MySQL servers and enter mysql shell
 * Next enter "mysql -uroot -proot" to set username and password for PhpMyAdmin
 
 * From bash terminal, enter "apachectl start" to start PhpMyAdmin
+@home~~~~~~~~~~~~
+* download MAMP if you don't already have it on your computer. // https://www.mamp.info/en/ follow instructions for your OS.
+
+* start MAMP application.
+* enter "mysql -uroot -proot" to set username and password for PhpMyAdmin
+~~~~~~~~~~~~~~~~~~
 * In browser, type "localhost:8080/phpmyadmin"
+  - or go to preferences to see which port MySql is using. Might be localhost:8888/phpmyadmin.
 * If prompted, both your username and password are "root"
 
 * From PhpMyAdmin, import "discogs" and "discogs_test" databases included in crate folder
