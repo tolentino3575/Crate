@@ -41,7 +41,7 @@ https://github.com/patternandshape/crate.git
 
 * start MAMP application.
 * enter "mysql -uroot -proot" to set username and password for PhpMyAdmin
-~~~~~~~~~~~~~~~~~~
+
 * In browser, type "localhost:8080/phpmyadmin"
   - or go to preferences to see which port MySql is using. Might be localhost:8888/phpmyadmin.
 * If prompted, both your username and password are "root"
