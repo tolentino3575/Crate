@@ -28,6 +28,8 @@ CRATE is a responsive website for collecting, viewing, organizing and adding to 
 * Font Awesome
 * Discogs API
 
+CRATE can be viewed at http://crate-app.herokuapp.com 
+or
 ####Install CRATE locally by cloning this repository:
 
 https://github.com/patternandshape/crate.git
